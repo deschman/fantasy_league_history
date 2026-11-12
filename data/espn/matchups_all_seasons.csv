@@ -1,0 +1,497 @@
+season,week,home_team,home_score,away_team,away_score
+2016,1,TheMasterChief ScrubDestroyers,109.0,Josh Gordan's Rehab Clinic ,102.0
+2016,1,Team SmurffDaddy69,107.0,Team MAMBA,96.0
+2016,1,Makin' It Dwayne,65.0,Laremy Tunsil's Gas Masks,60.0
+2016,1,Team Thiry,117.0,Famous Jameis,77.0
+2016,1,Diggs Out For Harambe,96.0,Team Rossi,87.0
+2016,2,Team MAMBA,82.0,Laremy Tunsil's Gas Masks,89.0
+2016,2,Famous Jameis,67.0,TheMasterChief ScrubDestroyers,97.0
+2016,2,Team Rossi,105.0,Josh Gordan's Rehab Clinic ,74.0
+2016,2,Team Thiry,88.5,Team SmurffDaddy69,72.5
+2016,2,Diggs Out For Harambe,67.0,Makin' It Dwayne,103.0
+2016,3,Famous Jameis,110.5,Team Rossi,71.5
+2016,3,Team MAMBA,104.5,Team Thiry,56.5
+2016,3,Laremy Tunsil's Gas Masks,86.5,Diggs Out For Harambe,85.5
+2016,3,TheMasterChief ScrubDestroyers,116.0,Team SmurffDaddy69,112.0
+2016,3,Josh Gordan's Rehab Clinic ,93.0,Makin' It Dwayne,141.0
+2016,4,Team Thiry,119.0,Diggs Out For Harambe,77.5
+2016,4,Team SmurffDaddy69,104.0,Famous Jameis,63.0
+2016,4,Makin' It Dwayne,97.0,Team Rossi,73.0
+2016,4,TheMasterChief ScrubDestroyers,59.5,Team MAMBA,99.0
+2016,4,Josh Gordan's Rehab Clinic ,76.5,Laremy Tunsil's Gas Masks,104.5
+2016,5,Team SmurffDaddy69,101.0,Makin' It Dwayne,115.5
+2016,5,Team Thiry,50.0,TheMasterChief ScrubDestroyers,96.0
+2016,5,Diggs Out For Harambe,94.5,Josh Gordan's Rehab Clinic ,60.0
+2016,5,Famous Jameis,83.0,Team MAMBA,86.0
+2016,5,Team Rossi,132.0,Laremy Tunsil's Gas Masks,73.0
+2016,6,Josh Gordan's Rehab Clinic ,105.0,Team MAMBA,71.0
+2016,6,Laremy Tunsil's Gas Masks,52.0,Famous Jameis,69.0
+2016,6,Team Rossi,52.5,Team Thiry,90.0
+2016,6,Diggs Out For Harambe,114.5,Team SmurffDaddy69,104.0
+2016,6,Makin' It Dwayne,77.0,TheMasterChief ScrubDestroyers,126.0
+2016,7,Famous Jameis,68.5,Josh Gordan's Rehab Clinic ,94.0
+2016,7,Team Thiry,107.0,Laremy Tunsil's Gas Masks,63.0
+2016,7,Team SmurffDaddy69,125.0,Team Rossi,71.0
+2016,7,TheMasterChief ScrubDestroyers,75.0,Diggs Out For Harambe,128.0
+2016,7,Team MAMBA,98.0,Makin' It Dwayne,90.0
+2016,8,Josh Gordan's Rehab Clinic ,53.0,Team Thiry,94.5
+2016,8,Laremy Tunsil's Gas Masks,78.0,Team SmurffDaddy69,93.5
+2016,8,Team Rossi,122.0,TheMasterChief ScrubDestroyers,81.5
+2016,8,Diggs Out For Harambe,70.0,Team MAMBA,118.0
+2016,8,Makin' It Dwayne,92.0,Famous Jameis,99.5
+2016,9,Team SmurffDaddy69,114.5,Josh Gordan's Rehab Clinic ,83.0
+2016,9,TheMasterChief ScrubDestroyers,88.5,Team Thiry,67.5
+2016,9,Laremy Tunsil's Gas Masks,125.5,Makin' It Dwayne,103.0
+2016,9,Team MAMBA,90.5,Famous Jameis,78.5
+2016,9,Team Rossi,96.5,Diggs Out For Harambe,105.5
+2016,10,TheMasterChief ScrubDestroyers,61.5,Laremy Tunsil's Gas Masks,82.5
+2016,10,Team MAMBA,111.0,Team SmurffDaddy69,92.0
+2016,10,Josh Gordan's Rehab Clinic ,83.5,Team Rossi,80.0
+2016,10,Famous Jameis,82.0,Team Thiry,56.0
+2016,10,Makin' It Dwayne,125.0,Diggs Out For Harambe,114.5
+2016,11,Team MAMBA,76.0,Team Rossi,64.5
+2016,11,TheMasterChief ScrubDestroyers,91.0,Famous Jameis,92.0
+2016,11,Diggs Out For Harambe,91.0,Laremy Tunsil's Gas Masks,78.5
+2016,11,Team SmurffDaddy69,69.0,Team Thiry,63.5
+2016,11,Makin' It Dwayne,81.5,Josh Gordan's Rehab Clinic ,88.0
+2016,12,Famous Jameis,62.5,Diggs Out For Harambe,75.0
+2016,12,Team Thiry,124.0,Team MAMBA,96.5
+2016,12,Team Rossi,109.0,Makin' It Dwayne,101.0
+2016,12,Team SmurffDaddy69,97.5,TheMasterChief ScrubDestroyers,122.0
+2016,12,Laremy Tunsil's Gas Masks,40.0,Josh Gordan's Rehab Clinic ,86.0
+2016,13,Team Thiry,64.0,Makin' It Dwayne,75.0
+2016,13,Famous Jameis,88.5,Team SmurffDaddy69,73.5
+2016,13,Josh Gordan's Rehab Clinic ,106.5,Diggs Out For Harambe,114.0
+2016,13,Team MAMBA,71.0,TheMasterChief ScrubDestroyers,93.5
+2016,13,Laremy Tunsil's Gas Masks,94.0,Team Rossi,103.0
+2016,14,Josh Gordan's Rehab Clinic ,65.5,TheMasterChief ScrubDestroyers,98.0
+2016,14,Laremy Tunsil's Gas Masks,73.0,Team MAMBA,53.0
+2016,14,Team Rossi,59.0,Famous Jameis,73.0
+2016,14,Diggs Out For Harambe,55.5,Team Thiry,104.5
+2016,14,Makin' It Dwayne,66.0,Team SmurffDaddy69,125.0
+2016,15,TheMasterChief ScrubDestroyers,94.0,,0.0
+2016,15,Team Thiry,54.5,Makin' It Dwayne,88.5
+2016,15,Team MAMBA,100.0,Team SmurffDaddy69,108.0
+2016,15,Diggs Out For Harambe,117.0,,0.0
+2016,15,Famous Jameis,77.0,Laremy Tunsil's Gas Masks,73.5
+2016,15,Team Rossi,63.0,Josh Gordan's Rehab Clinic ,84.5
+2016,16,TheMasterChief ScrubDestroyers,100.5,Makin' It Dwayne,90.0
+2016,16,Diggs Out For Harambe,92.0,Team SmurffDaddy69,115.0
+2016,16,Team MAMBA,111.5,Team Thiry,65.5
+2016,16,Famous Jameis,47.0,Josh Gordan's Rehab Clinic ,99.5
+2016,16,Laremy Tunsil's Gas Masks,124.5,Team Rossi,82.0
+2016,17,TheMasterChief ScrubDestroyers,103.5,Team SmurffDaddy69,67.5
+2016,17,Diggs Out For Harambe,74.0,Makin' It Dwayne,54.5
+2016,17,Team MAMBA,118.5,Team Thiry,83.0
+2016,17,Laremy Tunsil's Gas Masks,93.0,Josh Gordan's Rehab Clinic ,109.5
+2016,17,Famous Jameis,51.0,Team Rossi,103.0
+2017,1,The Golden Taints,64.6,The Godd Gurleys,81.2
+2017,1,Team C-Bear,76.7,Golden Tate Freaking Sucks,53.3
+2017,1,Out Of The Hunt,123.0,A Measly Merchant,134.7
+2017,1,TheMasterChief ScrubDestroyers,96.8,Team TJ Houshzamomma,93.7
+2017,1,Makin' It Dwayne,96.9,Team Thiry,99.7
+2017,2,Golden Tate Freaking Sucks,103.5,A Measly Merchant,68.3
+2017,2,Team TJ Houshzamomma,89.6,The Golden Taints,90.9
+2017,2,Team Thiry,125.1,The Godd Gurleys,93.4
+2017,2,TheMasterChief ScrubDestroyers,92.8,Team C-Bear,136.9
+2017,2,Makin' It Dwayne,99.3,Out Of The Hunt,113.8
+2017,3,Team TJ Houshzamomma,83.3,Team Thiry,125.6
+2017,3,Golden Tate Freaking Sucks,65.6,TheMasterChief ScrubDestroyers,48.5
+2017,3,A Measly Merchant,102.7,Makin' It Dwayne,90.1
+2017,3,The Golden Taints,78.9,Team C-Bear,121.3
+2017,3,The Godd Gurleys,113.3,Out Of The Hunt,110.0
+2017,4,TheMasterChief ScrubDestroyers,112.0,Makin' It Dwayne,77.5
+2017,4,Team C-Bear,98.4,Team TJ Houshzamomma,97.0
+2017,4,Out Of The Hunt,107.8,Team Thiry,92.6
+2017,4,The Golden Taints,132.1,Golden Tate Freaking Sucks,91.9
+2017,4,The Godd Gurleys,144.1,A Measly Merchant,86.4
+2017,5,Team C-Bear,84.8,Out Of The Hunt,91.3
+2017,5,TheMasterChief ScrubDestroyers,117.9,The Golden Taints,107.0
+2017,5,Makin' It Dwayne,90.5,The Godd Gurleys,80.1
+2017,5,Team TJ Houshzamomma,88.0,Golden Tate Freaking Sucks,101.5
+2017,5,Team Thiry,100.6,A Measly Merchant,94.1
+2017,6,The Godd Gurleys,76.8,Golden Tate Freaking Sucks,108.1
+2017,6,A Measly Merchant,137.7,Team TJ Houshzamomma,70.6
+2017,6,Team Thiry,99.1,TheMasterChief ScrubDestroyers,102.6
+2017,6,Makin' It Dwayne,83.1,Team C-Bear,76.6
+2017,6,Out Of The Hunt,123.1,The Golden Taints,133.1
+2017,7,Team TJ Houshzamomma,117.6,The Godd Gurleys,113.9
+2017,7,TheMasterChief ScrubDestroyers,125.3,A Measly Merchant,78.7
+2017,7,Team C-Bear,85.9,Team Thiry,116.2
+2017,7,The Golden Taints,115.5,Makin' It Dwayne,105.6
+2017,7,Golden Tate Freaking Sucks,117.2,Out Of The Hunt,87.7
+2017,8,The Godd Gurleys,143.1,TheMasterChief ScrubDestroyers,116.7
+2017,8,A Measly Merchant,72.5,Team C-Bear,111.9
+2017,8,Team Thiry,78.7,The Golden Taints,64.7
+2017,8,Makin' It Dwayne,94.8,Golden Tate Freaking Sucks,111.2
+2017,8,Out Of The Hunt,94.3,Team TJ Houshzamomma,81.2
+2017,9,Team C-Bear,98.3,The Godd Gurleys,124.4
+2017,9,The Golden Taints,72.1,TheMasterChief ScrubDestroyers,97.6
+2017,9,A Measly Merchant,114.4,Out Of The Hunt,99.6
+2017,9,Golden Tate Freaking Sucks,129.7,Team TJ Houshzamomma,77.6
+2017,9,Team Thiry,73.4,Makin' It Dwayne,84.1
+2017,10,The Golden Taints,93.6,A Measly Merchant,73.7
+2017,10,Golden Tate Freaking Sucks,98.1,Team C-Bear,96.3
+2017,10,The Godd Gurleys,128.7,Team Thiry,95.4
+2017,10,Team TJ Houshzamomma,80.3,TheMasterChief ScrubDestroyers,120.9
+2017,10,Out Of The Hunt,89.3,Makin' It Dwayne,102.3
+2017,11,Golden Tate Freaking Sucks,77.4,Team Thiry,113.4
+2017,11,The Golden Taints,95.3,Team TJ Houshzamomma,164.4
+2017,11,Makin' It Dwayne,115.2,A Measly Merchant,84.1
+2017,11,Team C-Bear,75.8,TheMasterChief ScrubDestroyers,116.2
+2017,11,Out Of The Hunt,105.4,The Godd Gurleys,136.0
+2017,12,Team TJ Houshzamomma,131.5,Makin' It Dwayne,98.1
+2017,12,TheMasterChief ScrubDestroyers,98.9,Golden Tate Freaking Sucks,70.4
+2017,12,Team Thiry,113.8,Out Of The Hunt,95.9
+2017,12,Team C-Bear,87.2,The Golden Taints,150.9
+2017,12,A Measly Merchant,91.3,The Godd Gurleys,111.7
+2017,13,TheMasterChief ScrubDestroyers,76.3,Out Of The Hunt,89.3
+2017,13,Team TJ Houshzamomma,111.2,Team C-Bear,95.5
+2017,13,The Godd Gurleys,107.9,Makin' It Dwayne,113.9
+2017,13,Golden Tate Freaking Sucks,124.1,The Golden Taints,125.2
+2017,13,A Measly Merchant,99.9,Team Thiry,70.6
+2017,14,TheMasterChief ScrubDestroyers,111.5,,0.0
+2017,14,Golden Tate Freaking Sucks,130.3,The Golden Taints,122.0
+2017,14,Team Thiry,63.2,Makin' It Dwayne,76.5
+2017,14,The Godd Gurleys,89.3,,0.0
+2017,14,Team C-Bear,81.5,A Measly Merchant,120.4
+2017,14,Out Of The Hunt,119.9,Team TJ Houshzamomma,112.1
+2017,15,TheMasterChief ScrubDestroyers,132.2,Golden Tate Freaking Sucks,137.7
+2017,15,The Godd Gurleys,127.2,Makin' It Dwayne,73.9
+2017,15,Team Thiry,61.4,The Golden Taints,112.3
+2017,15,A Measly Merchant,86.7,Out Of The Hunt,123.7
+2017,15,Team C-Bear,114.7,Team TJ Houshzamomma,112.2
+2017,16,The Godd Gurleys,123.9,Golden Tate Freaking Sucks,56.4
+2017,16,TheMasterChief ScrubDestroyers,92.3,Makin' It Dwayne,98.0
+2017,16,Team Thiry,107.0,The Golden Taints,73.0
+2017,16,Team C-Bear,78.9,Out Of The Hunt,85.4
+2017,16,A Measly Merchant,62.9,Team TJ Houshzamomma,116.5
+2018,1,The Golden Comeback,66.0,The Godd Gurleys,92.5
+2018,1,Team C-Bear,82.8,Happy Gollodays,106.0
+2018,1,Kittles n Bits,142.4,Remember The Alamo,87.0
+2018,1,TheMasterChief ScrubDestroyers,141.2,Team TJ Houshzamomma,135.0
+2018,1,The Wrath of Quon,120.4,Team Thiry,129.0
+2018,2,Happy Gollodays,123.0,Remember The Alamo,96.0
+2018,2,Team TJ Houshzamomma,110.9,The Golden Comeback,95.6
+2018,2,Team Thiry,103.7,The Godd Gurleys,136.8
+2018,2,TheMasterChief ScrubDestroyers,87.5,Team C-Bear,110.7
+2018,2,The Wrath of Quon,85.1,Kittles n Bits,127.6
+2018,3,Team TJ Houshzamomma,95.5,Team Thiry,76.0
+2018,3,Happy Gollodays,108.8,TheMasterChief ScrubDestroyers,133.5
+2018,3,Remember The Alamo,103.5,The Wrath of Quon,94.1
+2018,3,The Golden Comeback,82.9,Team C-Bear,118.4
+2018,3,The Godd Gurleys,85.3,Kittles n Bits,102.2
+2018,4,TheMasterChief ScrubDestroyers,122.4,The Wrath of Quon,93.8
+2018,4,Team C-Bear,75.1,Team TJ Houshzamomma,135.3
+2018,4,Kittles n Bits,129.6,Team Thiry,112.5
+2018,4,The Golden Comeback,127.6,Happy Gollodays,121.9
+2018,4,The Godd Gurleys,101.4,Remember The Alamo,115.4
+2018,5,Team C-Bear,104.3,Kittles n Bits,122.7
+2018,5,TheMasterChief ScrubDestroyers,84.5,The Golden Comeback,69.1
+2018,5,The Wrath of Quon,96.1,The Godd Gurleys,110.7
+2018,5,Team TJ Houshzamomma,99.3,Happy Gollodays,125.6
+2018,5,Team Thiry,73.0,Remember The Alamo,149.9
+2018,6,The Godd Gurleys,119.4,Happy Gollodays,101.8
+2018,6,Remember The Alamo,141.6,Team TJ Houshzamomma,110.1
+2018,6,Team Thiry,53.3,TheMasterChief ScrubDestroyers,105.1
+2018,6,The Wrath of Quon,119.2,Team C-Bear,96.6
+2018,6,Kittles n Bits,192.8,The Golden Comeback,100.0
+2018,7,Team TJ Houshzamomma,81.5,The Godd Gurleys,107.2
+2018,7,TheMasterChief ScrubDestroyers,132.4,Remember The Alamo,105.4
+2018,7,Team C-Bear,141.7,Team Thiry,73.4
+2018,7,The Golden Comeback,83.9,The Wrath of Quon,90.6
+2018,7,Happy Gollodays,131.2,Kittles n Bits,163.8
+2018,8,The Godd Gurleys,143.0,TheMasterChief ScrubDestroyers,142.7
+2018,8,Remember The Alamo,156.8,Team C-Bear,130.0
+2018,8,Team Thiry,146.4,The Golden Comeback,108.0
+2018,8,The Wrath of Quon,83.0,Happy Gollodays,80.2
+2018,8,Kittles n Bits,96.1,Team TJ Houshzamomma,83.5
+2018,9,Team C-Bear,132.3,The Godd Gurleys,78.9
+2018,9,The Golden Comeback,118.9,TheMasterChief ScrubDestroyers,102.0
+2018,9,Remember The Alamo,145.7,Kittles n Bits,144.8
+2018,9,Happy Gollodays,88.7,Team TJ Houshzamomma,154.4
+2018,9,Team Thiry,86.9,The Wrath of Quon,84.5
+2018,10,The Golden Comeback,90.1,Remember The Alamo,137.1
+2018,10,Happy Gollodays,135.1,Team C-Bear,121.3
+2018,10,The Godd Gurleys,97.8,Team Thiry,118.1
+2018,10,Team TJ Houshzamomma,123.0,TheMasterChief ScrubDestroyers,99.3
+2018,10,Kittles n Bits,171.3,The Wrath of Quon,63.0
+2018,11,Happy Gollodays,66.3,Team Thiry,101.8
+2018,11,The Golden Comeback,127.0,Team TJ Houshzamomma,100.7
+2018,11,The Wrath of Quon,82.0,Remember The Alamo,145.7
+2018,11,Team C-Bear,100.7,TheMasterChief ScrubDestroyers,149.2
+2018,11,Kittles n Bits,188.1,The Godd Gurleys,89.3
+2018,12,Team TJ Houshzamomma,104.1,The Wrath of Quon,84.0
+2018,12,TheMasterChief ScrubDestroyers,120.4,Happy Gollodays,90.0
+2018,12,Team Thiry,99.1,Kittles n Bits,128.9
+2018,12,Team C-Bear,135.7,The Golden Comeback,136.8
+2018,12,Remember The Alamo,109.6,The Godd Gurleys,122.7
+2018,13,TheMasterChief ScrubDestroyers,92.1,Kittles n Bits,82.7
+2018,13,Team TJ Houshzamomma,101.8,Team C-Bear,139.6
+2018,13,The Godd Gurleys,105.1,The Wrath of Quon,100.4
+2018,13,Happy Gollodays,77.1,The Golden Comeback,84.8
+2018,13,Remember The Alamo,152.1,Team Thiry,80.5
+2018,14,Kittles n Bits,140.4,,0.0
+2018,14,The Godd Gurleys,87.2,Team TJ Houshzamomma,76.2
+2018,14,Remember The Alamo,121.5,Team C-Bear,84.7
+2018,14,TheMasterChief ScrubDestroyers,142.0,,0.0
+2018,14,Team Thiry,68.0,The Golden Comeback,78.7
+2018,14,Happy Gollodays,71.4,The Wrath of Quon,88.5
+2018,15,Kittles n Bits,81.2,The Godd Gurleys,121.0
+2018,15,TheMasterChief ScrubDestroyers,98.7,Remember The Alamo,129.8
+2018,15,Team TJ Houshzamomma,83.8,Team C-Bear,108.7
+2018,15,The Golden Comeback,97.3,The Wrath of Quon,66.6
+2018,15,Team Thiry,105.6,Happy Gollodays,88.1
+2018,16,Remember The Alamo,126.1,The Godd Gurleys,110.9
+2018,16,Kittles n Bits,104.4,TheMasterChief ScrubDestroyers,60.2
+2018,16,Team TJ Houshzamomma,150.9,Team C-Bear,144.4
+2018,16,Team Thiry,111.5,The Golden Comeback,65.4
+2018,16,Happy Gollodays,97.7,The Wrath of Quon,80.7
+2019,1,Kyler The Creator ,154.8,The Godd Gurleys,75.8
+2019,1,What’s Good MaHomies,152.6,Happy Gollodays,114.6
+2019,1,Baby Chark dodo dodo do,57.9,The 40 Pizza Reckoning,105.2
+2019,1,TheMasterChief ScrubDestroyers,91.7,Team TJ Houshzamomma,122.5
+2019,1,The Wrath of Quon,90.7,Team Thiry,111.6
+2019,2,Happy Gollodays,108.6,The 40 Pizza Reckoning,118.4
+2019,2,Team TJ Houshzamomma,107.9,Kyler The Creator ,85.5
+2019,2,Team Thiry,97.4,The Godd Gurleys,86.7
+2019,2,TheMasterChief ScrubDestroyers,114.4,What’s Good MaHomies,110.9
+2019,2,The Wrath of Quon,103.4,Baby Chark dodo dodo do,83.5
+2019,3,Team TJ Houshzamomma,129.9,Team Thiry,113.2
+2019,3,Happy Gollodays,122.2,TheMasterChief ScrubDestroyers,137.0
+2019,3,The 40 Pizza Reckoning,108.8,The Wrath of Quon,107.2
+2019,3,Kyler The Creator ,120.3,What’s Good MaHomies,138.9
+2019,3,The Godd Gurleys,89.9,Baby Chark dodo dodo do,122.9
+2019,4,TheMasterChief ScrubDestroyers,97.0,The Wrath of Quon,92.6
+2019,4,What’s Good MaHomies,123.8,Team TJ Houshzamomma,121.6
+2019,4,Baby Chark dodo dodo do,71.1,Team Thiry,139.1
+2019,4,Kyler The Creator ,89.2,Happy Gollodays,88.0
+2019,4,The Godd Gurleys,95.8,The 40 Pizza Reckoning,72.8
+2019,5,What’s Good MaHomies,114.6,Baby Chark dodo dodo do,141.3
+2019,5,TheMasterChief ScrubDestroyers,101.5,Kyler The Creator ,145.0
+2019,5,The Wrath of Quon,72.5,The Godd Gurleys,116.9
+2019,5,Team TJ Houshzamomma,133.1,Happy Gollodays,86.7
+2019,5,Team Thiry,179.9,The 40 Pizza Reckoning,99.3
+2019,6,The Godd Gurleys,122.1,Happy Gollodays,98.5
+2019,6,The 40 Pizza Reckoning,82.8,Team TJ Houshzamomma,100.4
+2019,6,Team Thiry,120.6,TheMasterChief ScrubDestroyers,128.7
+2019,6,The Wrath of Quon,133.7,What’s Good MaHomies,108.0
+2019,6,Baby Chark dodo dodo do,65.7,Kyler The Creator ,90.0
+2019,7,Team TJ Houshzamomma,92.4,The Godd Gurleys,102.8
+2019,7,TheMasterChief ScrubDestroyers,113.5,The 40 Pizza Reckoning,122.9
+2019,7,What’s Good MaHomies,81.8,Team Thiry,90.7
+2019,7,Kyler The Creator ,71.9,The Wrath of Quon,103.2
+2019,7,Happy Gollodays,106.7,Baby Chark dodo dodo do,69.6
+2019,8,The Godd Gurleys,113.7,TheMasterChief ScrubDestroyers,149.2
+2019,8,The 40 Pizza Reckoning,164.0,What’s Good MaHomies,91.0
+2019,8,Team Thiry,108.7,Kyler The Creator ,105.7
+2019,8,The Wrath of Quon,121.5,Happy Gollodays,104.8
+2019,8,Baby Chark dodo dodo do,83.3,Team TJ Houshzamomma,154.8
+2019,9,What’s Good MaHomies,111.9,The Godd Gurleys,98.6
+2019,9,Kyler The Creator ,145.4,TheMasterChief ScrubDestroyers,146.4
+2019,9,The 40 Pizza Reckoning,74.9,Baby Chark dodo dodo do,87.3
+2019,9,Happy Gollodays,85.6,Team TJ Houshzamomma,93.9
+2019,9,Team Thiry,97.9,The Wrath of Quon,74.4
+2019,10,Kyler The Creator ,181.4,The 40 Pizza Reckoning,99.3
+2019,10,Happy Gollodays,72.0,What’s Good MaHomies,104.9
+2019,10,The Godd Gurleys,91.0,Team Thiry,118.6
+2019,10,Team TJ Houshzamomma,88.2,TheMasterChief ScrubDestroyers,136.9
+2019,10,Baby Chark dodo dodo do,79.2,The Wrath of Quon,82.7
+2019,11,Happy Gollodays,70.7,Team Thiry,103.1
+2019,11,Kyler The Creator ,102.7,Team TJ Houshzamomma,92.0
+2019,11,The Wrath of Quon,90.1,The 40 Pizza Reckoning,108.6
+2019,11,What’s Good MaHomies,161.5,TheMasterChief ScrubDestroyers,95.1
+2019,11,Baby Chark dodo dodo do,87.5,The Godd Gurleys,105.3
+2019,12,Team TJ Houshzamomma,100.4,The Wrath of Quon,79.2
+2019,12,TheMasterChief ScrubDestroyers,123.3,Happy Gollodays,90.2
+2019,12,Team Thiry,89.8,Baby Chark dodo dodo do,124.5
+2019,12,What’s Good MaHomies,123.9,Kyler The Creator ,124.4
+2019,12,The 40 Pizza Reckoning,141.3,The Godd Gurleys,58.4
+2019,13,TheMasterChief ScrubDestroyers,94.8,Baby Chark dodo dodo do,57.6
+2019,13,Team TJ Houshzamomma,88.4,What’s Good MaHomies,98.7
+2019,13,The Godd Gurleys,129.5,The Wrath of Quon,85.2
+2019,13,Happy Gollodays,130.2,Kyler The Creator ,97.4
+2019,13,The 40 Pizza Reckoning,91.2,Team Thiry,83.2
+2019,14,TheMasterChief ScrubDestroyers,112.2,,0.0
+2019,14,The 40 Pizza Reckoning,146.2,What’s Good MaHomies,114.7
+2019,14,Team TJ Houshzamomma,111.7,Kyler The Creator ,126.1
+2019,14,Team Thiry,85.8,,0.0
+2019,14,The Godd Gurleys,118.4,The Wrath of Quon,68.3
+2019,14,Baby Chark dodo dodo do,103.8,Happy Gollodays,115.9
+2019,15,TheMasterChief ScrubDestroyers,126.3,The 40 Pizza Reckoning,140.3
+2019,15,Team Thiry,126.9,Kyler The Creator ,87.6
+2019,15,Team TJ Houshzamomma,91.5,What’s Good MaHomies,0.0
+2019,15,The Godd Gurleys,104.3,Happy Gollodays,109.6
+2019,15,The Wrath of Quon,138.4,Baby Chark dodo dodo do,115.8
+2019,16,Team Thiry,68.8,The 40 Pizza Reckoning,88.4
+2019,16,TheMasterChief ScrubDestroyers,57.3,Kyler The Creator ,63.6
+2019,16,Team TJ Houshzamomma,110.5,What’s Good MaHomies,0.0
+2019,16,The Wrath of Quon,149.8,Happy Gollodays,99.6
+2019,16,The Godd Gurleys,101.9,Baby Chark dodo dodo do,115.2
+2020,1,Happy Gollodays,86.5,The La'Mical Pee Stains,113.7
+2020,1,Quon Solo,107.0,Team TJ Houshzamomma,73.0
+2020,1,The Silence of The Lamb,88.0,New Alexandria  Noble Team,175.6
+2020,1,Kyler the  Creators ,143.2,What’s Good MaHomies,119.1
+2020,1,Team Thiry,134.8,The 11 Pizza Reckoning,153.5
+2020,2,Team TJ Houshzamomma,81.5,New Alexandria  Noble Team,152.7
+2020,2,What’s Good MaHomies,112.0,Happy Gollodays,105.0
+2020,2,The 11 Pizza Reckoning,143.1,The La'Mical Pee Stains,101.6
+2020,2,Kyler the  Creators ,107.3,Quon Solo,102.6
+2020,2,Team Thiry,79.2,The Silence of The Lamb,178.7
+2020,3,What’s Good MaHomies,106.8,The 11 Pizza Reckoning,147.7
+2020,3,Team TJ Houshzamomma,98.8,Kyler the  Creators ,108.2
+2020,3,New Alexandria  Noble Team,132.0,Team Thiry,113.3
+2020,3,Happy Gollodays,131.7,Quon Solo,76.4
+2020,3,The La'Mical Pee Stains,129.0,The Silence of The Lamb,128.7
+2020,4,Kyler the  Creators ,157.7,Team Thiry,130.3
+2020,4,Quon Solo,86.9,What’s Good MaHomies,69.6
+2020,4,The Silence of The Lamb,104.7,The 11 Pizza Reckoning,122.8
+2020,4,Happy Gollodays,78.6,Team TJ Houshzamomma,82.2
+2020,4,The La'Mical Pee Stains,94.1,New Alexandria  Noble Team,134.4
+2020,5,Quon Solo,48.5,The Silence of The Lamb,94.0
+2020,5,Kyler the  Creators ,112.2,Happy Gollodays,114.0
+2020,5,Team Thiry,129.0,The La'Mical Pee Stains,127.5
+2020,5,What’s Good MaHomies,107.5,Team TJ Houshzamomma,69.7
+2020,5,The 11 Pizza Reckoning,159.4,New Alexandria  Noble Team,135.7
+2020,6,The La'Mical Pee Stains,93.4,Team TJ Houshzamomma,62.7
+2020,6,New Alexandria  Noble Team,94.6,What’s Good MaHomies,80.5
+2020,6,The 11 Pizza Reckoning,91.3,Kyler the  Creators ,168.2
+2020,6,Team Thiry,123.6,Quon Solo,112.2
+2020,6,The Silence of The Lamb,97.2,Happy Gollodays,120.8
+2020,7,What’s Good MaHomies,85.7,The La'Mical Pee Stains,92.6
+2020,7,Kyler the  Creators ,118.5,New Alexandria  Noble Team,126.4
+2020,7,Quon Solo,107.3,The 11 Pizza Reckoning,101.6
+2020,7,Happy Gollodays,149.2,Team Thiry,89.5
+2020,7,Team TJ Houshzamomma,122.2,The Silence of The Lamb,109.1
+2020,8,The La'Mical Pee Stains,93.4,Kyler the  Creators ,123.0
+2020,8,New Alexandria  Noble Team,116.0,Quon Solo,99.7
+2020,8,The 11 Pizza Reckoning,121.4,Happy Gollodays,56.3
+2020,8,Team Thiry,123.0,Team TJ Houshzamomma,80.4
+2020,8,The Silence of The Lamb,94.9,What’s Good MaHomies,102.3
+2020,9,Quon Solo,108.7,The La'Mical Pee Stains,123.5
+2020,9,Happy Gollodays,68.2,Kyler the  Creators ,139.1
+2020,9,New Alexandria  Noble Team,145.2,The Silence of The Lamb,107.0
+2020,9,Team TJ Houshzamomma,48.8,What’s Good MaHomies,144.7
+2020,9,The 11 Pizza Reckoning,101.1,Team Thiry,125.2
+2020,10,Happy Gollodays,96.1,New Alexandria  Noble Team,117.1
+2020,10,Team TJ Houshzamomma,120.2,Quon Solo,129.2
+2020,10,The La'Mical Pee Stains,89.7,The 11 Pizza Reckoning,93.1
+2020,10,What’s Good MaHomies,75.7,Kyler the  Creators ,112.0
+2020,10,The Silence of The Lamb,76.8,Team Thiry,103.7
+2020,11,Team TJ Houshzamomma,93.7,The 11 Pizza Reckoning,118.8
+2020,11,Happy Gollodays,78.2,What’s Good MaHomies,107.4
+2020,11,Team Thiry,146.2,New Alexandria  Noble Team,117.8
+2020,11,Quon Solo,119.2,Kyler the  Creators ,132.2
+2020,11,The Silence of The Lamb,104.4,The La'Mical Pee Stains,94.3
+2020,12,What’s Good MaHomies,146.8,Team Thiry,152.6
+2020,12,Kyler the  Creators ,129.4,Team TJ Houshzamomma,80.7
+2020,12,The 11 Pizza Reckoning,86.2,The Silence of The Lamb,55.3
+2020,12,Quon Solo,117.6,Happy Gollodays,91.9
+2020,12,New Alexandria  Noble Team,120.3,The La'Mical Pee Stains,96.9
+2020,13,Kyler the  Creators ,113.7,The Silence of The Lamb,154.8
+2020,13,What’s Good MaHomies,93.0,Quon Solo,97.9
+2020,13,The La'Mical Pee Stains,86.7,Team Thiry,129.5
+2020,13,Team TJ Houshzamomma,78.0,Happy Gollodays,102.2
+2020,13,New Alexandria  Noble Team,149.4,The 11 Pizza Reckoning,85.8
+2020,14,New Alexandria  Noble Team,138.7,,0.0
+2020,14,Team Thiry,134.1,Quon Solo,75.7
+2020,14,The 11 Pizza Reckoning,108.3,What’s Good MaHomies,101.4
+2020,14,Kyler the  Creators ,133.7,,0.0
+2020,14,The La'Mical Pee Stains,119.0,Happy Gollodays,131.6
+2020,14,The Silence of The Lamb,74.2,Team TJ Houshzamomma,104.0
+2020,15,New Alexandria  Noble Team,128.8,Team Thiry,119.7
+2020,15,Kyler the  Creators ,125.0,The 11 Pizza Reckoning,119.0
+2020,15,Quon Solo,100.1,What’s Good MaHomies,102.8
+2020,15,Happy Gollodays,91.2,Team TJ Houshzamomma,85.5
+2020,15,The La'Mical Pee Stains,79.8,The Silence of The Lamb,118.0
+2020,16,New Alexandria  Noble Team,203.7,Kyler the  Creators ,112.3
+2020,16,The 11 Pizza Reckoning,108.8,Team Thiry,131.9
+2020,16,Quon Solo,95.0,What’s Good MaHomies,85.8
+2020,16,Happy Gollodays,98.9,The Silence of The Lamb,103.4
+2020,16,The La'Mical Pee Stains,91.8,Team TJ Houshzamomma,106.4
+2021,1,Happy Gollodays,111.1,Everything Must Go,125.2
+2021,1,Team TJ Houshzamomma,139.6,What’s Good MaHomies,128.2
+2021,1,HERE IS THE LAMB SAUCE,118.1,Team Thiry,123.6
+2021,1,Kyler the  Creators ,141.5,Quon Solo,130.9
+2021,1,New Alexandria  Noble Team,113.5,Baked In A Mayfield ,81.0
+2021,2,What’s Good MaHomies,91.9,Team Thiry,102.6
+2021,2,Quon Solo,109.4,Happy Gollodays,137.5
+2021,2,Baked In A Mayfield ,78.4,Everything Must Go,114.7
+2021,2,Kyler the  Creators ,158.5,Team TJ Houshzamomma,112.0
+2021,2,New Alexandria  Noble Team,138.4,HERE IS THE LAMB SAUCE,140.7
+2021,3,Quon Solo,104.9,Baked In A Mayfield ,79.9
+2021,3,What’s Good MaHomies,117.2,Kyler the  Creators ,122.8
+2021,3,Team Thiry,113.9,New Alexandria  Noble Team,128.1
+2021,3,Happy Gollodays,77.8,Team TJ Houshzamomma,97.8
+2021,3,Everything Must Go,161.8,HERE IS THE LAMB SAUCE,154.8
+2021,4,Kyler the  Creators ,141.4,New Alexandria  Noble Team,112.8
+2021,4,Team TJ Houshzamomma,100.5,Quon Solo,176.5
+2021,4,HERE IS THE LAMB SAUCE,102.8,Baked In A Mayfield ,81.0
+2021,4,Happy Gollodays,133.4,What’s Good MaHomies,142.5
+2021,4,Everything Must Go,104.1,Team Thiry,111.8
+2021,5,Team TJ Houshzamomma,115.7,HERE IS THE LAMB SAUCE,129.4
+2021,5,Kyler the  Creators ,135.0,Happy Gollodays,101.5
+2021,5,New Alexandria  Noble Team,155.6,Everything Must Go,100.5
+2021,5,Quon Solo,104.4,What’s Good MaHomies,91.5
+2021,5,Baked In A Mayfield ,85.1,Team Thiry,183.6
+2021,6,Everything Must Go,84.6,What’s Good MaHomies,134.1
+2021,6,Team Thiry,142.1,Quon Solo,122.9
+2021,6,Baked In A Mayfield ,93.7,Kyler the  Creators ,144.0
+2021,6,New Alexandria  Noble Team,92.1,Team TJ Houshzamomma,135.0
+2021,6,HERE IS THE LAMB SAUCE,145.1,Happy Gollodays,103.0
+2021,7,Quon Solo,131.1,Everything Must Go,122.7
+2021,7,Kyler the  Creators ,129.3,Team Thiry,128.9
+2021,7,Team TJ Houshzamomma,70.2,Baked In A Mayfield ,95.9
+2021,7,Happy Gollodays,105.7,New Alexandria  Noble Team,132.6
+2021,7,What’s Good MaHomies,102.2,HERE IS THE LAMB SAUCE,116.5
+2021,8,Everything Must Go,101.6,Kyler the  Creators ,76.2
+2021,8,Team Thiry,108.0,Team TJ Houshzamomma,99.5
+2021,8,Baked In A Mayfield ,61.2,Happy Gollodays,94.3
+2021,8,New Alexandria  Noble Team,102.4,What’s Good MaHomies,67.8
+2021,8,HERE IS THE LAMB SAUCE,136.6,Quon Solo,122.5
+2021,9,Team TJ Houshzamomma,93.1,Everything Must Go,124.0
+2021,9,Happy Gollodays,82.9,Kyler the  Creators ,113.3
+2021,9,Team Thiry,162.6,HERE IS THE LAMB SAUCE,99.2
+2021,9,What’s Good MaHomies,44.6,Quon Solo,82.5
+2021,9,Baked In A Mayfield ,84.9,New Alexandria  Noble Team,111.0
+2021,10,Happy Gollodays,94.9,Team Thiry,121.4
+2021,10,What’s Good MaHomies,102.5,Team TJ Houshzamomma,94.6
+2021,10,Everything Must Go,109.6,Baked In A Mayfield ,92.9
+2021,10,Quon Solo,117.6,Kyler the  Creators ,70.1
+2021,10,HERE IS THE LAMB SAUCE,105.8,New Alexandria  Noble Team,109.9
+2021,11,What’s Good MaHomies,101.2,Baked In A Mayfield ,76.6
+2021,11,Happy Gollodays,117.3,Quon Solo,94.8
+2021,11,New Alexandria  Noble Team,119.4,Team Thiry,183.5
+2021,11,Team TJ Houshzamomma,127.0,Kyler the  Creators ,81.8
+2021,11,HERE IS THE LAMB SAUCE,109.7,Everything Must Go,124.8
+2021,12,Quon Solo,109.2,New Alexandria  Noble Team,98.2
+2021,12,Kyler the  Creators ,104.1,What’s Good MaHomies,79.5
+2021,12,Baked In A Mayfield ,77.8,HERE IS THE LAMB SAUCE,128.8
+2021,12,Team TJ Houshzamomma,116.5,Happy Gollodays,98.8
+2021,12,Team Thiry,109.0,Everything Must Go,150.1
+2021,13,Kyler the  Creators ,145.9,HERE IS THE LAMB SAUCE,108.6
+2021,13,Quon Solo,147.9,Team TJ Houshzamomma,108.9
+2021,13,Everything Must Go,117.6,New Alexandria  Noble Team,126.7
+2021,13,What’s Good MaHomies,64.7,Happy Gollodays,98.1
+2021,13,Team Thiry,122.5,Baked In A Mayfield ,62.6
+2021,14,Everything Must Go,131.9,Happy Gollodays,124.1
+2021,14,Team Thiry,158.1,What’s Good MaHomies,75.7
+2021,14,Baked In A Mayfield ,77.4,Quon Solo,118.5
+2021,14,New Alexandria  Noble Team,120.7,Kyler the  Creators ,102.4
+2021,14,HERE IS THE LAMB SAUCE,116.7,Team TJ Houshzamomma,118.3
+2021,15,Team Thiry,162.2,,0.0
+2021,15,Quon Solo,126.9,New Alexandria  Noble Team,101.5
+2021,15,Everything Must Go,114.7,HERE IS THE LAMB SAUCE,70.0
+2021,15,Kyler the  Creators ,99.2,,0.0
+2021,15,Team TJ Houshzamomma,75.3,Happy Gollodays,76.6
+2021,15,What’s Good MaHomies,92.6,Baked In A Mayfield ,76.7
+2021,16,Team Thiry,138.1,Quon Solo,87.9
+2021,16,Kyler the  Creators ,93.7,Everything Must Go,101.3
+2021,16,New Alexandria  Noble Team,82.8,HERE IS THE LAMB SAUCE,84.8
+2021,16,Happy Gollodays,120.4,What’s Good MaHomies,96.3
+2021,16,Team TJ Houshzamomma,93.6,Baked In A Mayfield ,86.5
+2021,17,Team Thiry,97.2,Everything Must Go,75.2
+2021,17,Kyler the  Creators ,109.8,Quon Solo,119.6
+2021,17,New Alexandria  Noble Team,112.2,HERE IS THE LAMB SAUCE,130.0
+2021,17,Team TJ Houshzamomma,127.3,Happy Gollodays,113.1
+2021,17,What’s Good MaHomies,107.4,Baked In A Mayfield ,83.1

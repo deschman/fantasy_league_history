@@ -1,0 +1,305 @@
+season,week,home_team,home_score,away_team,away_score
+2022,1,Brown Town,123.98,DanRossi,87.3
+2022,1,Better than Richard,86.26,Quon Solo,107.28
+2022,1,Dicker the Kicker  ,92.06, CHRISTIAN WATSZN,106.02
+2022,1,ZaneThiry,152.9,Tapes and CD Lamb,116.12
+2022,1,#LetEmKnow,93.44,Speedo Boyos,133.2
+2022,2,Better than Richard,54.08,DanRossi,76.62
+2022,2,Brown Town,108.8,Quon Solo,101.66
+2022,2,ZaneThiry,163.2, CHRISTIAN WATSZN,110.22
+2022,2,#LetEmKnow,79.96,Dicker the Kicker  ,77.7
+2022,2,Speedo Boyos,152.58,Tapes and CD Lamb,130.52
+2022,3,Quon Solo,106.66,DanRossi,98.7
+2022,3,Brown Town,108.96,Better than Richard,91.04
+2022,3,Tapes and CD Lamb,98.38, CHRISTIAN WATSZN,112.78
+2022,3,Dicker the Kicker  ,97.6,Speedo Boyos,82.86
+2022,3,#LetEmKnow,84.6,ZaneThiry,108.0
+2022,4,DanRossi,106.16, CHRISTIAN WATSZN,94.02
+2022,4,Brown Town,153.14,Dicker the Kicker  ,105.06
+2022,4,Better than Richard,61.66,ZaneThiry,96.48
+2022,4,Speedo Boyos,158.28,Quon Solo,107.74
+2022,4,#LetEmKnow,74.28,Tapes and CD Lamb,137.88
+2022,5,Dicker the Kicker  ,119.82,DanRossi,122.66
+2022,5,Brown Town,139.62, CHRISTIAN WATSZN,74.64
+2022,5,Better than Richard,65.94,Tapes and CD Lamb,108.04
+2022,5,#LetEmKnow,92.66,Quon Solo,93.5
+2022,5,ZaneThiry,138.14,Speedo Boyos,150.76
+2022,6,ZaneThiry,120.9,DanRossi,87.98
+2022,6,Brown Town,94.76,Tapes and CD Lamb,119.12
+2022,6,#LetEmKnow,69.76,Better than Richard,107.98
+2022,6,Dicker the Kicker  ,97.32,Quon Solo,73.12
+2022,6,Speedo Boyos,95.84, CHRISTIAN WATSZN,69.86
+2022,7,Tapes and CD Lamb,133.86,DanRossi,122.68
+2022,7,#LetEmKnow,108.44,Brown Town,128.76
+2022,7,Better than Richard,119.24,Speedo Boyos,89.36
+2022,7,Quon Solo,76.58, CHRISTIAN WATSZN,77.18
+2022,7,ZaneThiry,90.86,Dicker the Kicker  ,72.86
+2022,8,#LetEmKnow,95.7,DanRossi,80.8
+2022,8,Brown Town,143.46,Speedo Boyos,187.88
+2022,8,Better than Richard,113.72, CHRISTIAN WATSZN,84.8
+2022,8,ZaneThiry,110.82,Quon Solo,104.42
+2022,8,Dicker the Kicker  ,89.96,Tapes and CD Lamb,117.08
+2022,9,Speedo Boyos,137.5,DanRossi,88.02
+2022,9,Brown Town,171.82,ZaneThiry,82.34
+2022,9,Better than Richard,76.78,Dicker the Kicker  ,91.9
+2022,9,Quon Solo,91.06,Tapes and CD Lamb,86.94
+2022,9,#LetEmKnow,135.06, CHRISTIAN WATSZN,90.4
+2022,10,Brown Town,132.08,DanRossi,91.6
+2022,10,Better than Richard,101.9,Quon Solo,102.6
+2022,10,Dicker the Kicker  ,98.18, CHRISTIAN WATSZN,70.22
+2022,10,ZaneThiry,104.3,Tapes and CD Lamb,106.3
+2022,10,#LetEmKnow,71.16,Speedo Boyos,114.58
+2022,11,Better than Richard,101.48,DanRossi,158.76
+2022,11,Brown Town,146.8,Quon Solo,86.7
+2022,11,ZaneThiry,115.76, CHRISTIAN WATSZN,80.52
+2022,11,#LetEmKnow,87.66,Dicker the Kicker  ,123.04
+2022,11,Speedo Boyos,106.78,Tapes and CD Lamb,113.76
+2022,12,Quon Solo,112.92,DanRossi,88.7
+2022,12,Brown Town,146.16,Better than Richard,136.42
+2022,12,Tapes and CD Lamb,123.28, CHRISTIAN WATSZN,71.74
+2022,12,Dicker the Kicker  ,116.92,Speedo Boyos,124.88
+2022,12,#LetEmKnow,70.38,ZaneThiry,119.18
+2022,13,DanRossi,118.32, CHRISTIAN WATSZN,93.48
+2022,13,Brown Town,128.44,Dicker the Kicker  ,129.44
+2022,13,Better than Richard,96.64,ZaneThiry,104.68
+2022,13,Speedo Boyos,154.1,Quon Solo,80.64
+2022,13,#LetEmKnow,116.62,Tapes and CD Lamb,91.2
+2022,14,Dicker the Kicker  ,105.08,Tapes and CD Lamb,120.06
+2022,14,ZaneThiry,91.36,Quon Solo,63.76
+2022,14,DanRossi,70.26, CHRISTIAN WATSZN,64.22
+2022,14,#LetEmKnow,69.0,Better than Richard,107.96
+2022,15,Brown Town,126.68,Tapes and CD Lamb,151.12
+2022,15,ZaneThiry,86.14,Speedo Boyos,131.54
+2022,15,Dicker the Kicker  ,101.86,Quon Solo,100.36
+2022,15,#LetEmKnow,99.94, CHRISTIAN WATSZN,85.3
+2022,15,Better than Richard,70.04,DanRossi,79.94
+2022,16,Speedo Boyos,79.66,Tapes and CD Lamb,121.04
+2022,16,Brown Town,122.38,ZaneThiry,95.24
+2023,1,RIP Takitae ,103.92,We All Play For Corey ,169.7
+2023,1,Curse of GC,95.5,Hot Boyd Summer,102.96
+2023,1,Bust,136.8,Quon Solo,69.48
+2023,1,Salute the Sun,136.76,Lower for Bower,108.1
+2023,1,ZaneThiry,55.56,It Ertz when Eifert,106.28
+2023,2,We All Play For Corey ,153.34,Hot Boyd Summer,75.64
+2023,2,Curse of GC,93.58,RIP Takitae ,147.18
+2023,2,Bust,109.38,Lower for Bower,106.6
+2023,2,Quon Solo,138.54,It Ertz when Eifert,130.16
+2023,2,Salute the Sun,99.94,ZaneThiry,121.46
+2023,3,Curse of GC,116.98,We All Play For Corey ,188.84
+2023,3,RIP Takitae ,130.76,Hot Boyd Summer,109.28
+2023,3,Salute the Sun,141.34,Bust,119.16
+2023,3,ZaneThiry,79.98,Quon Solo,169.92
+2023,3,It Ertz when Eifert,131.68,Lower for Bower,78.72
+2023,4,Bust,114.66,We All Play For Corey ,162.48
+2023,4,RIP Takitae ,132.82,Quon Solo,101.4
+2023,4,Hot Boyd Summer,109.18,Lower for Bower,128.08
+2023,4,Curse of GC,108.28,ZaneThiry,51.06
+2023,4,Salute the Sun,131.88,It Ertz when Eifert,88.32
+2023,5,We All Play For Corey ,165.18,Quon Solo,148.38
+2023,5,Bust,93.62,RIP Takitae ,121.32
+2023,5,Salute the Sun,119.12,Hot Boyd Summer,160.32
+2023,5,Curse of GC,110.26,It Ertz when Eifert,93.54
+2023,5,ZaneThiry,79.46,Lower for Bower,118.98
+2023,6,We All Play For Corey ,136.32,Lower for Bower,92.16
+2023,6,Salute the Sun,123.64,RIP Takitae ,90.1
+2023,6,Hot Boyd Summer,116.54,It Ertz when Eifert,81.42
+2023,6,Curse of GC,127.7,Quon Solo,134.58
+2023,6,Bust,99.12,ZaneThiry,55.96
+2023,7,Salute the Sun,130.94,We All Play For Corey ,130.84
+2023,7,RIP Takitae ,121.6,It Ertz when Eifert,81.26
+2023,7,ZaneThiry,72.4,Hot Boyd Summer,75.9
+2023,7,Curse of GC,140.56,Bust,96.04
+2023,7,Quon Solo,123.46,Lower for Bower,115.46
+2023,8,We All Play For Corey ,129.98,It Ertz when Eifert,114.78
+2023,8,ZaneThiry,95.76,RIP Takitae ,145.88
+2023,8,Bust,112.86,Hot Boyd Summer,145.94
+2023,8,Curse of GC,105.14,Lower for Bower,131.18
+2023,8,Salute the Sun,132.26,Quon Solo,124.82
+2023,9,ZaneThiry,97.76,We All Play For Corey ,109.28
+2023,9,RIP Takitae ,108.26,Lower for Bower,61.22
+2023,9,Quon Solo,113.62,Hot Boyd Summer,112.68
+2023,9,Curse of GC,106.88,Salute the Sun,116.48
+2023,9,Bust,99.52,It Ertz when Eifert,114.92
+2023,10,RIP Takitae ,146.12,We All Play For Corey ,139.0
+2023,10,Curse of GC,102.4,Hot Boyd Summer,160.06
+2023,10,Bust,95.64,Quon Solo,121.0
+2023,10,Salute the Sun,96.32,Lower for Bower,57.74
+2023,10,ZaneThiry,108.86,It Ertz when Eifert,141.36
+2023,11,We All Play For Corey ,158.7,Hot Boyd Summer,101.98
+2023,11,Curse of GC,83.98,RIP Takitae ,113.64
+2023,11,Bust,147.92,Lower for Bower,102.2
+2023,11,Quon Solo,122.96,It Ertz when Eifert,123.34
+2023,11,Salute the Sun,110.8,ZaneThiry,116.5
+2023,12,Curse of GC,115.84,We All Play For Corey ,199.08
+2023,12,RIP Takitae ,121.22,Hot Boyd Summer,125.32
+2023,12,Salute the Sun,114.36,Bust,126.02
+2023,12,ZaneThiry,66.8,Quon Solo,123.98
+2023,12,It Ertz when Eifert,98.66,Lower for Bower,110.22
+2023,13,Bust,127.66,We All Play For Corey ,174.2
+2023,13,RIP Takitae ,119.38,Quon Solo,128.78
+2023,13,Hot Boyd Summer,157.5,Lower for Bower,93.48
+2023,13,Curse of GC,121.9,ZaneThiry,67.54
+2023,13,Salute the Sun,101.82,It Ertz when Eifert,106.16
+2023,14,Salute the Sun,117.58,Hot Boyd Summer,133.56
+2023,14,Quon Solo,148.48,It Ertz when Eifert,128.36
+2023,14,Bust,98.68,ZaneThiry,61.98
+2023,14,Curse of GC,144.12,Lower for Bower,81.28
+2023,15,We All Play For Corey ,191.96,Hot Boyd Summer,87.98
+2023,15,RIP Takitae ,121.5,Quon Solo,116.08
+2023,15,Salute the Sun,98.08,It Ertz when Eifert,134.38
+2023,15,ZaneThiry,95.88,Lower for Bower,93.8
+2023,15,Curse of GC,107.58,Bust,112.04
+2023,16,RIP Takitae ,97.2,We All Play For Corey ,140.98
+2023,16,Quon Solo,95.04,Hot Boyd Summer,136.28
+2024,1,Curse of GC,121.12,Shake Rattler and Roll,107.42
+2024,1,Puka Puka Pacheysaurus,140.58,Three Stooges,142.46
+2024,1,Quon Solo,129.96,It Ertz when Eifert,96.16
+2024,1,ZaneThiry,72.68,Half a percent. ,119.5
+2024,1,Lisan Al Caleb,110.48,RIP Takitae ,135.4
+2024,2,Curse of GC,100.46,Three Stooges,142.94
+2024,2,Shake Rattler and Roll,121.02,Puka Puka Pacheysaurus,131.5
+2024,2,Quon Solo,135.26,Half a percent. ,123.4
+2024,2,Lisan Al Caleb,99.84,It Ertz when Eifert,131.38
+2024,2,ZaneThiry,118.14,RIP Takitae ,126.74
+2024,3,Curse of GC,108.56,Puka Puka Pacheysaurus,133.18
+2024,3,Shake Rattler and Roll,99.68,Three Stooges,175.56
+2024,3,ZaneThiry,90.66,Quon Solo,161.6
+2024,3,RIP Takitae ,98.58,It Ertz when Eifert,162.16
+2024,3,Lisan Al Caleb,68.44,Half a percent. ,106.32
+2024,4,Curse of GC,124.06,Quon Solo,143.9
+2024,4,Shake Rattler and Roll,137.24,It Ertz when Eifert,101.74
+2024,4,Three Stooges,131.5,Half a percent. ,111.7
+2024,4,RIP Takitae ,132.48,Puka Puka Pacheysaurus,163.86
+2024,4,Lisan Al Caleb,115.04,ZaneThiry,127.76
+2024,5,Curse of GC,104.16,It Ertz when Eifert,139.5
+2024,5,Shake Rattler and Roll,80.38,Quon Solo,90.4
+2024,5,ZaneThiry,138.04,Three Stooges,152.98
+2024,5,Lisan Al Caleb,126.12,Puka Puka Pacheysaurus,160.72
+2024,5,RIP Takitae ,144.18,Half a percent. ,86.04
+2024,6,Curse of GC,115.92,Half a percent. ,122.26
+2024,6,Shake Rattler and Roll,103.28,ZaneThiry,104.16
+2024,6,Lisan Al Caleb,117.38,Three Stooges,142.24
+2024,6,Puka Puka Pacheysaurus,137.66,It Ertz when Eifert,72.6
+2024,6,RIP Takitae ,136.9,Quon Solo,165.9
+2024,7,Curse of GC,120.44,ZaneThiry,149.86
+2024,7,Shake Rattler and Roll,93.02,Lisan Al Caleb,111.98
+2024,7,RIP Takitae ,88.74,Three Stooges,176.72
+2024,7,Puka Puka Pacheysaurus,122.12,Quon Solo,94.14
+2024,7,It Ertz when Eifert,115.76,Half a percent. ,100.48
+2024,8,Curse of GC,117.96,Lisan Al Caleb,110.04
+2024,8,Shake Rattler and Roll,101.86,RIP Takitae ,152.92
+2024,8,Quon Solo,130.74,Three Stooges,158.2
+2024,8,Puka Puka Pacheysaurus,153.66,Half a percent. ,144.12
+2024,8,ZaneThiry,140.4,It Ertz when Eifert,133.36
+2024,9,Curse of GC,135.32,RIP Takitae ,126.66
+2024,9,Shake Rattler and Roll,88.3,Half a percent. ,119.56
+2024,9,Three Stooges,122.26,It Ertz when Eifert,115.98
+2024,9,ZaneThiry,121.66,Puka Puka Pacheysaurus,136.86
+2024,9,Lisan Al Caleb,124.2,Quon Solo,132.48
+2024,10,Curse of GC,92.82,Shake Rattler and Roll,92.48
+2024,10,Puka Puka Pacheysaurus,160.94,Three Stooges,185.38
+2024,10,Quon Solo,123.34,It Ertz when Eifert,114.7
+2024,10,ZaneThiry,118.94,Half a percent. ,103.94
+2024,10,Lisan Al Caleb,77.64,RIP Takitae ,88.14
+2024,11,Curse of GC,101.46,Three Stooges,126.98
+2024,11,Shake Rattler and Roll,131.1,Puka Puka Pacheysaurus,129.32
+2024,11,Quon Solo,178.76,Half a percent. ,124.16
+2024,11,Lisan Al Caleb,130.6,It Ertz when Eifert,137.08
+2024,11,ZaneThiry,146.76,RIP Takitae ,139.78
+2024,12,Curse of GC,118.04,Puka Puka Pacheysaurus,126.24
+2024,12,Shake Rattler and Roll,117.06,Three Stooges,133.14
+2024,12,ZaneThiry,110.08,Quon Solo,143.84
+2024,12,RIP Takitae ,112.22,It Ertz when Eifert,106.76
+2024,12,Lisan Al Caleb,126.44,Half a percent. ,123.64
+2024,13,Curse of GC,105.1,Quon Solo,154.38
+2024,13,Shake Rattler and Roll,140.52,It Ertz when Eifert,109.04
+2024,13,Three Stooges,135.62,Half a percent. ,137.22
+2024,13,RIP Takitae ,142.8,Puka Puka Pacheysaurus,150.98
+2024,13,Lisan Al Caleb,131.5,ZaneThiry,130.18
+2024,14,ZaneThiry,99.12,RIP Takitae ,119.76
+2024,14,Puka Puka Pacheysaurus,163.6,It Ertz when Eifert,115.66
+2024,14,Shake Rattler and Roll,135.36,Half a percent. ,145.24
+2024,14,Curse of GC,152.2,Lisan Al Caleb,123.06
+2024,15,RIP Takitae ,172.62,Three Stooges,173.7
+2024,15,Puka Puka Pacheysaurus,169.54,Quon Solo,151.74
+2024,15,ZaneThiry,117.9,It Ertz when Eifert,84.34
+2024,15,Shake Rattler and Roll,92.52,Lisan Al Caleb,95.02
+2024,15,Curse of GC,108.9,Half a percent. ,111.24
+2024,16,Puka Puka Pacheysaurus,187.1,Three Stooges,161.28
+2024,16,RIP Takitae ,92.38,Quon Solo,128.4
+2025,1,Lisan Al Caleb,107.66,ZaneThiry,123.3
+2025,1,Puka Puka Professor X,160.56,Half a percent. ,129.58
+2025,1,RIP Takitae ,99.34,It Ertz when Eifert,98.5
+2025,1,The Tet Offensive,90.64,"Slingin' Penix, Kickin' D",111.82
+2025,1,Curse of GC,121.6,Shady Akers,147.92
+2025,2,Lisan Al Caleb,103.98,Half a percent. ,152.9
+2025,2,ZaneThiry,100.38,Puka Puka Professor X,135.6
+2025,2,The Tet Offensive,96.02,RIP Takitae ,103.7
+2025,2,Shady Akers,152.12,It Ertz when Eifert,125.48
+2025,2,Curse of GC,113.24,"Slingin' Penix, Kickin' D",159.48
+2025,3,Lisan Al Caleb,134.58,Puka Puka Professor X,142.22
+2025,3,ZaneThiry,122.68,Half a percent. ,107.88
+2025,3,RIP Takitae ,106.6,"Slingin' Penix, Kickin' D",104.78
+2025,3,Curse of GC,145.96,It Ertz when Eifert,140.44
+2025,3,The Tet Offensive,84.42,Shady Akers,116.38
+2025,4,Lisan Al Caleb,162.5,RIP Takitae ,166.96
+2025,4,ZaneThiry,136.84,It Ertz when Eifert,173.86
+2025,4,The Tet Offensive,89.64,Half a percent. ,131.46
+2025,4,Curse of GC,124.82,Puka Puka Professor X,155.0
+2025,4,"Slingin' Penix, Kickin' D",163.66,Shady Akers,112.88
+2025,5,Lisan Al Caleb,125.22,It Ertz when Eifert,124.24
+2025,5,ZaneThiry,126.48,RIP Takitae ,116.96
+2025,5,"Slingin' Penix, Kickin' D",137.82,Half a percent. ,133.08
+2025,5,Puka Puka Professor X,179.0,Shady Akers,140.18
+2025,5,Curse of GC,141.76,The Tet Offensive,92.74
+2025,6,The Tet Offensive,80.36,Lisan Al Caleb,114.08
+2025,6,ZaneThiry,128.86,"Slingin' Penix, Kickin' D",104.14
+2025,6,Shady Akers,131.96,Half a percent. ,162.56
+2025,6,Puka Puka Professor X,166.06,It Ertz when Eifert,81.84
+2025,6,Curse of GC,125.52,RIP Takitae ,104.66
+2025,7,Lisan Al Caleb,100.24,"Slingin' Penix, Kickin' D",126.1
+2025,7,ZaneThiry,122.2,Shady Akers,198.46
+2025,7,Curse of GC,130.36,Half a percent. ,113.82
+2025,7,RIP Takitae ,107.6,Puka Puka Professor X,157.34
+2025,7,The Tet Offensive,97.94,It Ertz when Eifert,179.68
+2025,8,Lisan Al Caleb,126.5,Shady Akers,199.26
+2025,8,Curse of GC,114.46,ZaneThiry,99.06
+2025,8,RIP Takitae ,114.54,Half a percent. ,147.54
+2025,8,The Tet Offensive,85.58,Puka Puka Professor X,104.96
+2025,8,"Slingin' Penix, Kickin' D",157.16,It Ertz when Eifert,121.66
+2025,9,Curse of GC,77.92,Lisan Al Caleb,127.1
+2025,9,The Tet Offensive,74.6,ZaneThiry,152.68
+2025,9,It Ertz when Eifert,117.78,Half a percent. ,110.12
+2025,9,Puka Puka Professor X,169.38,"Slingin' Penix, Kickin' D",118.6
+2025,9,RIP Takitae ,116.96,Shady Akers,137.3
+2025,10,Lisan Al Caleb,130.12,ZaneThiry,120.94
+2025,10,Puka Puka Professor X,129.08,Half a percent. ,135.32
+2025,10,RIP Takitae ,89.64,It Ertz when Eifert,159.6
+2025,10,The Tet Offensive,105.68,"Slingin' Penix, Kickin' D",131.72
+2025,10,Curse of GC,132.38,Shady Akers,140.68
+2025,11,Lisan Al Caleb,75.48,Half a percent. ,127.44
+2025,11,ZaneThiry,135.74,Puka Puka Professor X,139.86
+2025,11,The Tet Offensive,86.78,RIP Takitae ,103.04
+2025,11,Shady Akers,175.16,It Ertz when Eifert,112.88
+2025,11,Curse of GC,96.24,"Slingin' Penix, Kickin' D",135.16
+2025,12,Lisan Al Caleb,118.24,Puka Puka Professor X,152.76
+2025,12,ZaneThiry,151.72,Half a percent. ,104.28
+2025,12,RIP Takitae ,86.3,"Slingin' Penix, Kickin' D",154.66
+2025,12,Curse of GC,94.18,It Ertz when Eifert,169.88
+2025,12,The Tet Offensive,125.88,Shady Akers,148.7
+2025,13,Lisan Al Caleb,82.1,RIP Takitae ,60.58
+2025,13,ZaneThiry,143.52,It Ertz when Eifert,114.72
+2025,13,The Tet Offensive,83.92,Half a percent. ,131.5
+2025,13,Curse of GC,176.32,Puka Puka Professor X,103.62
+2025,13,"Slingin' Penix, Kickin' D",123.3,Shady Akers,168.06
+2025,14,ZaneThiry,140.26,Half a percent. ,82.1
+2025,14,Curse of GC,159.34,"Slingin' Penix, Kickin' D",147.52
+2025,14,The Tet Offensive,95.52,It Ertz when Eifert,143.76
+2025,14,Lisan Al Caleb,114.92,RIP Takitae ,84.38
+2025,15,ZaneThiry,149.62,Puka Puka Professor X,131.58
+2025,15,Curse of GC,158.4,Shady Akers,162.68
+2025,15,"Slingin' Penix, Kickin' D",168.44,Half a percent. ,117.04
+2025,15,The Tet Offensive,71.9,RIP Takitae ,130.0
+2025,15,Lisan Al Caleb,121.02,It Ertz when Eifert,105.2
+2025,16,ZaneThiry,169.08,Shady Akers,154.92
+2025,16,Curse of GC,101.1,Puka Puka Professor X,148.98
