@@ -50,11 +50,44 @@ test("franchise inheritance changes attribution without changing league totals",
   assert.equal(rossOwner.titles, 0);
   assert.equal(owners.find((group) => group.name === "Jordan").titles, 1);
   assert.equal(franchises.find((group) => group.name === "xNioiNx").seasons.length, 10);
-  assert.equal(franchises.length, 11);
-  assert.equal(owners.length, 13);
+  assert.equal(franchises.length, new Set(history.map((row) => row.franchise.id)).size);
+  assert.equal(owners.length, new Set(history.map((row) => row.owner.id)).size);
   for (const metric of ["wins", "losses", "ties", "pointsFor", "pointsAgainst", "titles"]) {
     const sum = (groups) => groups.reduce((total, row) => total + row[metric], 0);
     assert.ok(Math.abs(sum(franchises) - sum(owners)) < 0.000001, metric);
+  }
+});
+
+test("adding an inheriting owner merges franchises without merging actual owners", () => {
+  const updated = structuredClone(sources);
+  const gcMappings = updated.find((source) => source.platform === "espn").crosswalk
+    .filter((row) => row.owner === "GC");
+  assert.equal(gcMappings.length, 3);
+  for (const mapping of gcMappings) mapping.inheriting_owner = "";
+  const before = buildHistory(updated);
+  const beforeFranchises = aggregate(before, "franchise");
+  const gc = beforeFranchises.find((group) => group.name === "GC");
+  const trevor = beforeFranchises.find((group) => group.name === "trevriley04");
+
+  for (const mapping of gcMappings) mapping.inheriting_owner = "trevriley04";
+  const after = buildHistory(updated);
+  const afterFranchises = aggregate(after, "franchise");
+  const combined = afterFranchises.find((group) => group.name === "trevriley04");
+
+  assert.equal(afterFranchises.length, beforeFranchises.length - 1);
+  assert.ok(!afterFranchises.some((group) => group.name === "GC"));
+  assert.equal(combined.seasons.length, trevor.seasons.length + gc.seasons.length);
+  for (const metric of ["wins", "losses", "ties", "pointsFor", "pointsAgainst", "titles", "podiums"]) {
+    assert.ok(Math.abs(combined[metric] - trevor[metric] - gc[metric]) < 0.000001, metric);
+  }
+  const ownerResults = (rows) => aggregate(rows, "owner").map((group) => ({
+    ...group,
+    seasons: group.seasons.map(({ franchise, ...season }) => season),
+  }));
+  assert.deepEqual(ownerResults(after), ownerResults(before));
+  for (const row of after.filter((entry) => entry.owner.name === "GC")) {
+    assert.equal(row.franchise.id, trevor.id);
+    assert.equal(row.owner.name, "GC");
   }
 });
 

@@ -66,7 +66,9 @@ node --test src/fe/history.test.mjs
 ```
 
 These tests use the actual CSVs to check identity joins, inheritance, all ten
-podiums, sorting, and CSV edge cases.
+podiums, sorting, and CSV edge cases. Franchise counts follow the crosswalk
+mappings rather than a fixed count; inheritance regression tests verify that
+adding a successor preserves actual-owner results and combines franchise totals.
 
 ## GitHub Pages
 
