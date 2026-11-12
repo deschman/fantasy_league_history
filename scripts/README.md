@@ -73,3 +73,25 @@ Run the offline regression tests:
 ```sh
 python3 -m unittest discover -s scripts -p 'test_get_sleeper_data.py'
 ```
+
+## ESPN credentials
+
+The legacy exporter (`get_epsn_data.py`, original filename preserved) reads
+`ESPN_S2` and `SWID` from the project-root `.env` file. Existing process
+environment variables take precedence. No dotenv package is required.
+
+For a new checkout, copy `.env.example` to `.env` and fill in both cookies
+for private ESPN leagues. Leave both empty for public access. Values may be
+unquoted or single/double quoted; use one `KEY=value` entry per line.
+The loader never executes shell substitutions.
+
+The local `.env` is ignored by Git and excluded from the Pages deployment.
+Keep a secure personal backup if needed, and never force-add it. If cookies
+were ever pushed or shared, revoke/rotate them even after cleaning history.
+Removing a secret from a current file does not remove existing Git copies.
+
+Run the credential loader tests without contacting ESPN:
+
+```sh
+python3 -m unittest discover -s scripts -p 'test_espn_credentials.py'
+```

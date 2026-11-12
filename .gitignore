@@ -3,5 +3,6 @@ __pycache__/
 *.pyc
 .DS_Store
 
-# The legacy local exporter contains authentication cookies.
-scripts/get_epsn_data.py
+.env
+.env.*
+!.env.example

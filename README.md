@@ -81,6 +81,7 @@ Do not select `src/fe/` as the deployment root.
 **Publishing makes the included CSV data public.** Review the usernames and
 historical real names in `data/` before publishing. Do not publish your local
 virtual environment or scripts containing private credentials. The included
-`.gitignore` excludes the legacy local ESPN exporter because it contains
-authentication cookies; keep it private and do not force-add it. Scripts,
+`.gitignore` excludes `.env` files containing local ESPN authentication cookies.
+The ESPN exporter reads them from the project-root `.env` or environment variables;
+see [credential setup](scripts/README.md#espn-credentials). Never force-add `.env`. Scripts,
 tests, and the virtual environment are not included in the deployed Pages site.
