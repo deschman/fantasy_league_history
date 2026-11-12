@@ -207,6 +207,13 @@ export function highlightGames(games, category) {
     b.game.season - a.game.season || b.game.week - a.game.week || a.game.id.localeCompare(b.game.id));
 }
 
+export function playerPerformances(starters, mode = "franchise", manager = "", position = "") {
+  return starters.filter((entry) => (!manager || entry.team[mode].id === manager) &&
+    (!position || entry.position === position)).sort((a, b) =>
+    b.points - a.points || b.season - a.season || b.week - a.week ||
+    a.player.localeCompare(b.player) || a.team[mode].id.localeCompare(b.team[mode].id));
+}
+
 export function playerMVPs(starters, mode = "franchise", manager = "", position = "", minimum = 1, sort = "points") {
   const groups = new Map();
   for (const entry of starters) {

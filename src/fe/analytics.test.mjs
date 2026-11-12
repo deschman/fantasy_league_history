@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { parseCSV, buildHistory, aggregate } from "./history.mjs";
-import { buildAnalytics, selectGames, rivalries, suggestedRivalries, highlightGames, playerMVPs, playoffResume } from "./analytics.mjs";
+import { buildAnalytics, selectGames, rivalries, suggestedRivalries, highlightGames, playerMVPs, playerPerformances, playoffResume } from "./analytics.mjs";
 import { renderFeature } from "./features.mjs";
 
 const sources = await Promise.all(["espn", "sleeper"].map(async (platform) => {
@@ -108,6 +108,42 @@ test("draft history contains 440 actual picks and retains the explicitly empty d
   const pick = analytics.drafts.find((draft) => draft.season === 2025).picks.find((pick) => pick.pick === 1);
   assert.equal(pick.name, "Ashton Jeanty");
   assert.equal(pick.team.owner.name, "RossMcCloskey");
+});
+
+test("single-game leaderboard retains separate starts, filters correctly, and does not mutate input", () => {
+  const starters = analytics.starters.filter((entry) => entry.stage === "regular");
+  const original = starters.map((entry) => `${entry.season}:${entry.week}:${entry.player}`);
+  const ranked = playerPerformances(starters);
+  assert.equal(ranked.length, starters.length);
+  for (let index = 1; index < ranked.length; index++) assert.ok(ranked[index - 1].points >= ranked[index].points);
+  assert.deepEqual(starters.map((entry) => `${entry.season}:${entry.week}:${entry.player}`), original);
+  const first = ranked[0];
+  const filtered = playerPerformances(starters, "owner", first.team.owner.id, first.position);
+  assert.ok(filtered.length > 0);
+  assert.ok(filtered.every((entry) => entry.team.owner.id === first.team.owner.id && entry.position === first.position));
+  const sample = [
+    { ...first, season: 2023, week: 1, points: 5000 },
+    { ...first, season: 2024, week: 1, points: 5000 },
+    { ...first, season: 2024, week: 2, points: 5000 },
+    { ...first, season: 2025, week: 1, points: -100 },
+  ];
+  assert.deepEqual(playerPerformances(sample).map((entry) => [entry.season, entry.week]),
+    [[2024, 2], [2024, 1], [2023, 1], [2025, 1]]);
+});
+
+test("single-game view shows top 50 plus cutoff ties, shared ranks, and no minimum-start filter", () => {
+  const first = analytics.starters[0];
+  const sample = Array.from({ length: 52 }, (_, index) => ({
+    ...first, points: index < 49 ? 10000 - index : 5000, week: 1, season: 2025,
+  }));
+  const html = renderFeature("players", { rows: history, analytics: { ...analytics, starters: sample },
+    mode: "franchise", era: "all", state: { scope: "regular", playerSort: "single", minStarts: "20",
+      playerManager: "", position: "", game: "" } });
+  assert.ok(html.includes("Single-game player performances"));
+  assert.ok(!html.includes('id="minStarts"'));
+  assert.equal((html.match(/<td>50<\/td>/g) ?? []).length, 3);
+  assert.equal((html.match(/<tr>/g) ?? []).length, 53);
+  assert.ok(html.includes("2025</td><td>1"));
 });
 
 test("championship resumes include all title years, finals, and finish extrema", () => {

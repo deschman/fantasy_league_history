@@ -33,7 +33,12 @@ live API requests. The page uses native browser JavaScript modules and fetch.
 - **Awards:** lighthearted career and weekly superlatives, including all tied
   holders and undefeated head-to-head series with at least four meetings.
 - **Player MVPs:** actual starter points, starts, points/start, best week,
-  seasons, and managers; filter by position/manager/minimum starts.
+  seasons, and managers; filter by position/manager/minimum starts. Choose
+  **Rank by → Single-game performances** for the top 50 started-player scores
+  (including ties at the cutoff), with manager, season, week, and game type.
+  Scope, manager, and position filters apply; minimum starts is hidden and does
+  not apply to single-game rankings. Repeated performances by a player are
+  separate entries; equal scores share a rank.
 - **Drafts:** completed draft picks, rounds, receiving managers, and keeper
   flags, with season, manager, and player-search filters.
 - **Data coverage:** season coverage, validation checks, and source caveats.

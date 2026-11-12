@@ -1,5 +1,5 @@
 import { aggregate } from "./history.mjs";
-import { selectGames, rivalries, suggestedRivalries, highlightGames, playerMVPs } from "./analytics.mjs";
+import { selectGames, rivalries, suggestedRivalries, highlightGames, playerMVPs, playerPerformances } from "./analytics.mjs";
 import { escapeHTML as e, number, record, sectionHeading } from "./ui.mjs";
 
 const points = (value) => number(value / 100, 2);
@@ -148,20 +148,33 @@ function playersView(context) {
   const managers = aggregate(rows.filter((row) => row.platform === "sleeper"), mode).sort((a, b) => a.name.localeCompare(b.name));
   if (state.playerManager && !managers.some((manager) => manager.id === state.playerManager)) state.playerManager = "";
   const positions = [...new Set(starters.map((entry) => entry.position))].sort();
-  const players = playerMVPs(starters, mode, state.playerManager, state.position, Number(state.minStarts), state.playerSort);
+  const singleGame = state.playerSort === "single";
+  const players = singleGame ? [] : playerMVPs(starters, mode, state.playerManager, state.position, Number(state.minStarts), state.playerSort);
+  const performances = singleGame ? playerPerformances(starters, mode, state.playerManager, state.position) : [];
+  const cutoff = performances[49]?.points ?? -Infinity;
+  const leaders = performances.filter((entry, index) => index < 50 || entry.points === cutoff);
   return sectionHeading("THE PLAYERS BEHIND THE POINTS", "Player MVPs", "Sleeper 2022–2025 only. Points count only when a player was actually started, not on the bench.") +
     `<div class="feature-controls">${scopeControl(state.scope)}
     ${managerSelect("playerManager", "Manager", managers, state.playerManager, true)}
     <label>Position<select id="position">${option("", "All positions", state.position)}${positions.map((position) => option(position, position, state.position)).join("")}</select></label>
-    <label>Minimum starts<select id="minStarts">${[1, 5, 10, 20].map((value) => option(value, value, state.minStarts)).join("")}</select></label>
-    <label>Rank by<select id="playerSort">${option("points", "Starter points", state.playerSort)}${option("average", "Points per start", state.playerSort)}</select></label></div>
+    ${!singleGame ? `<label>Minimum starts<select id="minStarts">${[1, 5, 10, 20].map((value) => option(value, value, state.minStarts)).join("")}</select></label>` : ""}
+    <label>Rank by<select id="playerSort">${option("points", "Starter points", state.playerSort)}${option("average", "Points per start", state.playerSort)}${option("single", "Single-game performances", state.playerSort)}</select></label></div>
     <p class="section-footnote">All recorded games includes scored bye weeks; title-bracket scope excludes placement games and byes. Player points do not incorporate commissioner overrides to the team total. Current player names/positions come from Sleeper’s player index.</p>
+    ${singleGame ? `<h3>Highest single-game player scores</h3>
+    <p class="section-footnote">Top 50 performances, including all ties at the cutoff. Equal scores share a rank; tied entries show most recent season/week first. A player can appear more than once. Minimum starts does not apply.</p>
+    <div class="table-scroll"><table><caption class="sr-only">Single-game player performances</caption><thead><tr>
+    <th>Rank</th><th>Player</th><th>Points</th><th>Manager</th><th>Season</th><th>Week</th><th>Type</th></tr></thead><tbody>
+    ${leaders.map((entry) => `<tr><td>${performances.findIndex((performance) => performance.points === entry.points) + 1}</td>
+    <td><strong>${e(entry.name)}</strong><small>${e(entry.position)}</small></td><td>${points(entry.points)}</td>
+    <td>${e(entry.team[mode].name)}<small>${e(entry.team.team)}</small></td><td>${entry.season}</td><td>${entry.week}</td>
+    <td>${stageName(entry.stage)}</td></tr>`).join("")}</tbody></table></div>
+    ${!leaders.length ? '<p class="empty">No performances meet these filters.</p>' : ""}` : `
     <div class="table-scroll"><table><caption class="sr-only">Player MVP rankings</caption><thead><tr>
     <th>Rank</th><th>Player</th><th>Points</th><th>Starts</th><th>Pts/start</th><th>Best week</th><th>Seasons</th><th>Managers</th></tr></thead><tbody>
     ${players.map((player, index) => `<tr><td>${index + 1}</td><td><strong>${e(player.name)}</strong><small>${e(player.position)}</small></td>
     <td>${points(player.points)}</td><td>${player.starts}</td><td>${points(player.average)}</td><td>${points(player.best)}</td>
     <td>${player.seasons.join(", ")}</td><td>${player.managers.map(e).join(", ")}</td></tr>`).join("")}</tbody></table></div>
-    ${!players.length ? '<p class="empty">No players meet these filters.</p>' : ""}`;
+    ${!players.length ? '<p class="empty">No players meet these filters.</p>' : ""}`}`;
 }
 
 function draftsView(context) {
