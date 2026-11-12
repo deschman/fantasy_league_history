@@ -1,16 +1,14 @@
 import { parseCSV, buildHistory, aggregate, sortStandings, seasonPodiums } from "./history.mjs";
+import { buildAnalytics, playoffResume } from "./analytics.mjs";
+import { renderFeature } from "./features.mjs";
+import { escapeHTML, number, percent, record, ordinal, sectionHeading } from "./ui.mjs";
 
 const $ = (selector) => document.querySelector(selector);
-const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (character) => ({
-  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
-})[character]);
-const number = (value, digits = 0) => new Intl.NumberFormat("en-US", { maximumFractionDigits: digits,
-  minimumFractionDigits: digits }).format(value);
-const percent = (value) => `${number(value * 100, 1)}%`;
-const record = (row) => `${row.wins}-${row.losses}${row.ties ? `-${row.ties}` : ""}`;
-const ordinal = (value) => value === null ? "—" : `${value}${value % 100 >= 11 && value % 100 <= 13 ? "th" : ({ 1: "st", 2: "nd", 3: "rd" }[value % 10] || "th")}`;
-const state = { view: "standings", era: "all", mode: "franchise", metric: "wins", search: "", season: null };
+const state = { view: "standings", era: "all", mode: "franchise", metric: "wins", search: "", season: null,
+  scope: "regular", category: "score", rivalA: "", rivalB: "", game: "", playerManager: "", position: "",
+  minStarts: "1", playerSort: "points", draftSeason: "", draftManager: "", draftQuery: "" };
 let history = [];
+let analytics;
 
 function avatar(name, large = false) {
   let hash = 0;
@@ -21,10 +19,6 @@ function avatar(name, large = false) {
 
 function platformTag(platform) {
   return `<span class="platform ${platform}">${platform === "espn" ? "ESPN" : "SLEEPER"}</span>`;
-}
-
-function sectionHeading(eyebrow, title, description = "") {
-  return `<div class="section-heading"><span class="eyebrow accent">${eyebrow}</span><h2 id="view-title">${title}</h2>${description ? `<p>${description}</p>` : ""}</div>`;
 }
 
 function renderOverview(rows) {
@@ -52,7 +46,7 @@ function renderStandings(rows) {
   const groups = sortStandings(aggregate(rows, state.mode), state.metric);
   const filtered = groups.filter((group) => `${group.name} ${group.seasons.map((row) => row.team).join(" ")}`.toLowerCase().includes(state.search.toLowerCase()));
   const labels = { wins: "Wins", winPercentage: "Win %", pointsFor: "Points for", pointsAgainst: "Points against",
-    titles: "Titles", podiums: "Podiums", averageFinish: "Avg. finish" };
+    titles: "Titles", finals: "Finals", podiums: "Podiums", averageFinish: "Avg. finish" };
   const metricValue = (group) => state.metric === "winPercentage" ? percent(group.winPercentage) :
     state.metric === "averageFinish" ? (group.averageFinish === null ? "—" : number(group.averageFinish, 1)) :
       number(group[state.metric], ["pointsFor", "pointsAgainst"].includes(state.metric) ? 2 : 0);
@@ -64,6 +58,9 @@ function renderStandings(rows) {
     <div class="list-heading"><span>RANK / MANAGER</span><span>${labels[state.metric].toUpperCase()}</span></div>
     <div class="standings-list">${filtered.length ? filtered.map((group) => {
       const rank = groups.findIndex((entry) => entry.id === group.id) + 1;
+      const playoff = playoffResume(group.id, analytics.coverage, analytics.games.filter((game) =>
+        state.era === "all" || game.platform === state.era), state.mode);
+      const playoffAvailable = state.era !== "espn" && group.seasons.some((row) => row.platform === "sleeper");
       return `<details class="manager"><summary><span class="rank ${rank <= 3 ? "top-rank" : ""}">${String(rank).padStart(2, "0")}</span>
       ${avatar(group.name)}<span class="manager-info"><strong>${escapeHTML(group.name)} ${group.titles ? `<span class="title-count" aria-label="${group.titles} championships">♛ ${group.titles}</span>` : ""}</strong>
       <small>${record(group)} <span>·</span> ${group.seasons.length} seasons <span>·</span> ${percent(group.winPercentage)}</small>
@@ -72,6 +69,10 @@ function renderStandings(rows) {
       <div class="manager-detail"><div class="detail-stats"><span>POINTS FOR<strong>${number(group.pointsFor, 2)}</strong></span>
       <span>POINTS AGAINST<strong>${number(group.pointsAgainst, 2)}</strong></span><span>PODIUMS<strong>${group.podiums}</strong></span>
       <span>AVG. FINISH<strong>${group.averageFinish === null ? "—" : number(group.averageFinish, 1)}</strong></span></div>
+      <div class="resume"><h3>Championship résumé</h3><p>Title years: ${group.titleYears.join(", ") || "None"} · Finals: ${group.finals}</p>
+      <p>Best finish: ${ordinal(group.bestFinish)} · Worst finish: ${ordinal(group.worstFinish)}</p>
+      <p>Verified title-bracket record (Sleeper 2022–2025 only): ${playoffAvailable ? `${playoff.wins}–${playoff.losses}` : "Unavailable"} ·
+      Appearances: ${playoffAvailable ? playoff.appearances : "Unavailable"}</p><p class="section-footnote">ESPN playoff wins and appearances are unknown; final placements and finals above include both platforms. No byes or placement wins counted.</p></div>
       ${seasonTable(group.seasons)}</div></details>`;
     }).join("") : `<p class="empty">No managers or teams match “${escapeHTML(state.search)}”.</p>`}</div>
     <p class="section-footnote">Regular-season records · ${state.mode === "franchise" ? "Inherited history included" : "Actual owners only"} · ${filtered.length} managers</p>`;
@@ -130,7 +131,8 @@ function render() {
   const rows = history.filter((row) => state.era === "all" || row.platform === state.era);
   renderOverview(rows);
   const renderers = { standings: renderStandings, champions: renderChampions, seasons: renderSeasons, records: renderRecords };
-  $("#view").innerHTML = renderers[state.view](rows);
+  $("#view").innerHTML = renderers[state.view] ? renderers[state.view](rows) :
+    renderFeature(state.view, { rows, analytics, state, era: state.era, mode: state.mode });
   $("#view").setAttribute("aria-labelledby", "view-title");
   for (const button of document.querySelectorAll("[data-view]")) {
     const selected = button.dataset.view === state.view;
@@ -149,35 +151,58 @@ document.addEventListener("click", (event) => {
     state.season = Number(button.dataset.season);
     render();
     document.querySelector(`[data-season="${state.season}"]`)?.focus();
+  } else if (button.dataset.game) {
+    state.game = button.dataset.game;
+    render();
+    const detail = $(".game-detail");
+    detail.setAttribute("tabindex", "-1");
+    detail.focus();
+    detail.scrollIntoView({ block: "nearest" });
+  } else if (button.dataset.closeGame) {
+    state.game = "";
+    render();
+    $("#view-title").setAttribute("tabindex", "-1");
+    $("#view-title").focus();
+  } else if (button.dataset.rivalA) {
+    state.rivalA = button.dataset.rivalA;
+    state.rivalB = button.dataset.rivalB;
+    render();
+    $("#rivalA").focus();
+    $("#rivalA").scrollIntoView({ block: "center" });
   }
 });
 document.addEventListener("change", (event) => {
-  if (!["era", "mode", "metric"].includes(event.target.id)) return;
+  if (!["era", "mode", "metric", "scope", "category", "rivalA", "rivalB", "playerManager",
+    "position", "minStarts", "playerSort", "draftSeason", "draftManager"].includes(event.target.id)) return;
   state[event.target.id] = event.target.value;
   const id = event.target.id;
   render();
   $(`#${id}`)?.focus();
 });
 document.addEventListener("input", (event) => {
-  if (event.target.id !== "search") return;
-  state.search = event.target.value;
+  if (!["search", "draftQuery"].includes(event.target.id)) return;
+  const id = event.target.id;
+  state[id] = event.target.value;
   const position = event.target.selectionStart;
   render();
-  $("#search").focus();
-  $("#search").setSelectionRange(position, position);
+  $(`#${id}`).focus();
+  $(`#${id}`).setSelectionRange(position, position);
 });
 
 async function loadArchive() {
   const sources = await Promise.all(["espn", "sleeper"].map(async (platform) => {
-    const [standings, crosswalk] = await Promise.all(["standings_all_seasons.csv", "crosswalk.csv"].map(async (filename) => {
+    const [standings, crosswalk, matchups] = await Promise.all(["standings_all_seasons.csv", "crosswalk.csv", "matchups_all_seasons.csv"].map(async (filename) => {
       const url = new URL(`../../data/${platform}/${filename}`, import.meta.url);
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Could not load ${platform}/${filename} (HTTP ${response.status})`);
       return parseCSV(await response.text());
     }));
-    return { platform, standings, crosswalk };
+    return { platform, standings, crosswalk, matchups };
   }));
   history = buildHistory(sources);
+  const detailResponse = await fetch(new URL("../../data/sleeper/details.json", import.meta.url));
+  if (!detailResponse.ok) throw new Error(`Could not load Sleeper historical details (HTTP ${detailResponse.status})`);
+  analytics = buildAnalytics(history, sources, await detailResponse.json());
   for (const platform of ["espn", "sleeper"]) {
     const seasons = history.filter((row) => row.platform === platform).map((row) => row.season);
     $(`#era option[value="${platform}"]`).textContent =

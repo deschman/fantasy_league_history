@@ -26,12 +26,14 @@ jobs:
         with:
           node-version: "22"
       - name: Test league history
-        run: node --test src/fe/history.test.mjs
+        run: node --test src/fe/*.test.mjs
+      - name: Test offline exporters
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
       - name: Stage static site
         run: |
           mkdir -p _site/src/fe
           cp index.html _site/
-          cp src/fe/app.mjs src/fe/history.mjs src/fe/styles.css _site/src/fe/
+          cp src/fe/app.mjs src/fe/history.mjs src/fe/analytics.mjs src/fe/features.mjs src/fe/ui.mjs src/fe/styles.css _site/src/fe/
           cp -R data _site/data
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5

@@ -133,14 +133,18 @@ export function aggregate(history, mode = "franchise") {
   }
   return [...groups.values()].map((group) => {
     const games = group.wins + group.losses + group.ties;
-    return { ...group, games, winPercentage: games ? (group.wins + group.ties / 2) / games : 0,
+    return { ...group, games, finals: group.finishes.filter((rank) => rank <= 2).length,
+      titleYears: group.seasons.filter((row) => row.finalRank === 1).map((row) => row.season).sort(),
+      bestFinish: group.finishes.length ? Math.min(...group.finishes) : null,
+      worstFinish: group.finishes.length ? Math.max(...group.finishes) : null,
+      winPercentage: games ? (group.wins + group.ties / 2) / games : 0,
       averageFinish: group.finishes.length ? group.finishes.reduce((a, b) => a + b, 0) / group.finishes.length : null,
       seasons: group.seasons.sort((a, b) => b.season - a.season) };
   });
 }
 
 export function sortStandings(groups, metric = "wins") {
-  const allowed = ["wins", "winPercentage", "pointsFor", "pointsAgainst", "titles", "podiums", "averageFinish"];
+  const allowed = ["wins", "winPercentage", "pointsFor", "pointsAgainst", "titles", "finals", "podiums", "averageFinish"];
   if (!allowed.includes(metric)) throw new Error(`Unknown standings metric: ${metric}`);
   return [...groups].sort((a, b) => {
     if (metric === "averageFinish") {

@@ -95,3 +95,35 @@ Run the credential loader tests without contacting ESPN:
 ```sh
 python3 -m unittest discover -s scripts -p 'test_espn_credentials.py'
 ```
+
+## Completed Sleeper season details
+
+```sh
+python3 scripts/get_sleeper_details.py
+```
+
+This separate, standard-library-only exporter writes `data/sleeper/details.json`
+for 2022–2025. It starts at the latest completed league
+`1179896124247248896`; it never requests 2026. Override `--league-id` or
+`--data-dir` as needed. Non-completed leagues are skipped by the command and
+rejected by the season exporter.
+
+Existing standings/crosswalks supply roster IDs and are never modified.
+The JSON contains regular-season boundaries, explicit title-bracket winners,
+playoff participant rosters, weekly starter IDs/points (including scored bye
+weeks), a reduced player-name/position index, and all historical draft picks.
+The full Sleeper player index is fetched once but only started-player metadata
+is retained. Draft names/positions come from pick metadata.
+
+Only games on the path to the title are marked as title-bracket games:
+third/fifth-place and consolation games are not playoff wins. Multi-week
+playoff formats and median-win leagues require additional handling and are
+rejected instead of guessed. Byes are not wins.
+
+Sleeper returns three completed 2022 draft records: 50 picks, 240 picks, and an
+empty draft. The empty one is retained and warned about rather than silently
+discarded. A missing starter score, unresolved title result, unknown roster,
+missing player metadata, or failed request prevents replacing the output.
+
+This exporter does not add ESPN draft or starter data. All downloaded detail
+seasons must already exist in the frontend's standings and crosswalks.

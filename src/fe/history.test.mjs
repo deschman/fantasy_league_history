@@ -109,7 +109,7 @@ test("all podiums match the champion CSVs across both sources", async () => {
 test("standings metrics sort correctly without mutating their input", () => {
   const groups = aggregate(history);
   const original = groups.map((group) => group.id);
-  for (const metric of ["wins", "winPercentage", "pointsFor", "pointsAgainst", "titles", "podiums", "averageFinish"]) {
+  for (const metric of ["wins", "winPercentage", "pointsFor", "pointsAgainst", "titles", "finals", "podiums", "averageFinish"]) {
     const sorted = sortStandings(groups, metric);
     for (let i = 1; i < sorted.length; i++) {
       assert.ok(metric === "averageFinish" ? sorted[i - 1][metric] <= sorted[i][metric] : sorted[i - 1][metric] >= sorted[i][metric]);
