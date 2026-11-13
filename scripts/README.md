@@ -234,3 +234,42 @@ This exporter never rewrites the CSVs or crosswalk.
 ```sh
 python3 -m unittest discover -s scripts -p 'test_espn_acquisitions.py'
 ```
+
+## Trade-grade inputs
+
+Run the same exporters in order; no separate grading download is required:
+
+```sh
+python3 scripts/get_espn_acquisitions.py
+python3 scripts/get_sleeper_acquisitions.py
+```
+
+Both acquisition JSON files now include sanitized `trades` and `tradePlayers`.
+A trade retains its event ID, season/time, participant roster IDs, directed
+player/pick assets and explicit completeness issues. Sleeper pick-only deals
+are retained even when `adds` and `drops` are empty. Multi-team deals are
+supported. ESPN's incidental roster cuts are not exchanged trade assets;
+`DRAFT_TRADE` records lack enough pick-year/round detail for reliable resolution
+and make that deal's grade unavailable. The previously ignored three trades
+without player details remain ignored.
+
+ESPN includes `tradeTeams` to join native team IDs to crosswalk franchises.
+Sleeper additionally includes `rookieDrafts`, excluding the startup placeholder,
+with completed draft times and picks keyed by season, round and original roster.
+The original roster is recovered from `draft_order` plus crosswalk owner IDs,
+not the pick's receiving roster. `tradePlayers` retains names for exchanged
+players and rookie selections, including those that never started.
+
+The browser computes grades from these assets and the validated starter
+acquisition evidence, in integer hundredths. It uses full covered regular-season
+holding returns, regardless of UI filters, and carries ESPN returns into
+Sleeper. Future picks use mean round returns across completed Sleeper rookie
+drafts, including zero-return players; a pick traded away before selection
+gets no replacement-asset credit. Missing inputs fail explicitly rather than
+silently substituting neutral grades. See the project README for grade bands
+and coverage limitations. No current-season data is requested.
+
+```sh
+python3 -m unittest discover -s scripts -p 'test_trade_assets.py'
+node --test src/fe/acquisition*.test.mjs
+```

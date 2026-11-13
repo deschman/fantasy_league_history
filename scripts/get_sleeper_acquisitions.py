@@ -13,6 +13,7 @@ from urllib.request import urlopen
 
 from get_sleeper_data import DEFAULT_OUTPUT, fetch_json
 from acquisition_migration import IMPORT_DRAFT
+from trade_assets import trade_record
 
 
 def milliseconds(value):
@@ -34,7 +35,7 @@ def kickoff_window(season, week):
     return [min(times), max(times)]
 
 
-def collect_events(season, roster_ids):
+def collect_events(season, roster_ids, trades=None, drafts=None, owner_rosters=None):
     league_id = season["leagueId"]
     events = []
     seen = {}
@@ -55,7 +56,7 @@ def collect_events(season, roster_ids):
                 continue
             seen[transaction_id] = transaction
             adds, drops = transaction.get("adds") or {}, transaction.get("drops") or {}
-            if not adds and not drops:
+            if not adds and not drops and not transaction.get("draft_picks"):
                 continue
             kind = transaction["type"]
             if kind not in ("trade", "waiver", "free_agent", "commissioner"):
@@ -69,6 +70,13 @@ def collect_events(season, roster_ids):
                       "commissioner": "unknown"}[kind]
             events.append({"at": timestamp, "id": transaction_id, "kind": kind, "source": source,
                            "adds": adds, "drops": drops, "season": season["season"]})
+            if kind == "trade" and trades is not None:
+                issues = ["FAAB is not valued"] if transaction.get("waiver_budget") else []
+                record = trade_record(events[-1], transaction["roster_ids"],
+                                      transaction.get("draft_picks") or [], issues)
+                if not set(record["participants"]) <= roster_ids:
+                    raise ValueError(f"Unknown trade participant: {transaction_id}")
+                trades.append(record)
             counts[kind] += 1
     for draft in fetch_json(f"league/{league_id}/drafts"):
         if draft["status"] != "complete":
@@ -91,6 +99,15 @@ def collect_events(season, roster_ids):
         if draft["draft_id"] == IMPORT_DRAFT:
             counts["import-placeholder"] += 1
             continue
+        if drafts is not None:
+            slots = {slot: owner_rosters[owner] for owner, slot in draft["draft_order"].items()}
+            if len(slots) != len(roster_ids) or set(slots.values()) != roster_ids:
+                raise ValueError(f"Incomplete original draft slots: {draft['draft_id']}")
+            drafts.append({"id": draft["draft_id"], "season": season["season"], "at": timestamp,
+                           "picks": [{"player": pick["player_id"], "round": pick["round"],
+                                      "roster": pick["roster_id"],
+                                      "originalRoster": slots[pick["draft_slot"]]}
+                                     for pick in picks]})
         events.append({"at": timestamp, "id": draft["draft_id"], "kind": "draft", "source": "draft",
                        "adds": adds, "drops": {}, "season": season["season"], "from": started})
         counts["draft"] += 1
@@ -229,7 +246,7 @@ def main():
     with (args.data_dir / "crosswalk.csv").open(newline="", encoding="utf-8") as handle:
         mappings = list(csv.DictReader(handle))
     seasons = sorted(details["seasons"], key=lambda season: season["season"])
-    events, windows, audits = [], {}, []
+    events, windows, audits, trades, drafts = [], {}, [], [], []
     previous_owners = {}
     for season in seasons:
         league = fetch_json(f"league/{season['leagueId']}")
@@ -242,7 +259,8 @@ def main():
         if previous_owners and owners != previous_owners:
             raise ValueError("Roster ownership changed; explicit franchise continuity mapping required")
         previous_owners = owners
-        season_events, counts = collect_events(season, set(owners))
+        season_events, counts = collect_events(season, set(owners), trades, drafts,
+                                               {owner: roster for roster, owner in owners.items()})
         events.extend(season_events)
         for week in range(1, season["lastWeek"] + 1):
             windows[f"{season['season']}:{week}"] = kickoff_window(season["season"], week)
@@ -255,8 +273,21 @@ def main():
     counts = defaultdict(int)
     for row in rows:
         counts[row["source"]] += 1
+    players = fetch_json("players/nfl")
+    trade_players = {}
+    player_ids = {asset["player"] for trade in trades for asset in trade["assets"]
+                  if asset["type"] == "player"}
+    player_ids.update(pick["player"] for draft in drafts for pick in draft["picks"])
+    for player_id in sorted(player_ids):
+        player = players[player_id]
+        name = player.get("full_name") or " ".join(
+            part for part in (player.get("first_name"), player.get("last_name")) if part)
+        if not name:
+            raise ValueError(f"Missing trade/draft player name: {player_id}")
+        trade_players[player_id] = name
     payload = {"version": 1, "method": "latest-franchise-acquisition",
                "rows": rows, "audit": audits, "windows": windows,
+               "trades": trades, "rookieDrafts": drafts, "tradePlayers": trade_players,
                "migration": {"draft": IMPORT_DRAFT, "seededPlayers": len(imported),
                              "from": "espn", "provenanceStart": espn["provenanceStart"]}}
     temporary = None

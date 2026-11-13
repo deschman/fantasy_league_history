@@ -204,6 +204,52 @@ are omitted for nonpositive totals or negative source buckets.
 For review, open the local preview with `?view=acquisitions`. This feature and
 the updated deployment allowlist must not be pushed until the preview is approved.
 
+### Acquisition grades
+
+Roster building shows **A** for draft acquisitions, **A+** for free agency
+(including waivers), and **N/A** for unknown sources. Trade acquisitions share
+the receiving franchise's grade for the entire deal. Repeat trades for the same
+player have separate rows; these are acquisition grades, not player talent grades.
+
+Trade return is covered **regular-season starter points** earned by directly
+received assets while held, across both eras through the latest exported season
+(currently 2025). Drops, genuine re-signings and subsequent trades stop credit;
+replacement assets from later trades are not followed. Same-franchise
+administrative restorations preserve existing acquisition evidence. Filters
+change the displayed starts, never the full-history grade.
+
+Net return subtracts the other team's return; multi-team deals subtract the mean
+return of all other teams, rounded to hundredths. The bands are:
+
+| Trade grade | Net starter-point margin |
+| --- | --- |
+| A- | +100 or more |
+| B | Greater than -100 and less than +100 |
+| C | -100 through -249.99 |
+| D | -250 through -499.99 |
+| F | -500 or less |
+
+The measured median absolute trade margin is about 50 points. The 100-point
+neutral tolerance on either side avoids overstating modest differences; 250 and 500 distinguish
+larger losses and severe outliers. B is centered on even and A- is the ceiling.
+
+Traded picks match by original franchise, year and round, not final draft owner.
+Once selected, the pick earns that player's starter points until dropped or
+traded. Trading a pick away before selection ends its direct return. Unmade
+picks use the mean observed holding return for that round across the 2022–2025
+Sleeper rookie drafts: 40 selections per round, including zeros, excluding the
+240-pick startup import. Older cohorts have longer scoring histories; these are
+transparent historical estimates, not equal-horizon forecasts.
+
+Expandable **Trade report cards** include pick-only and multi-team trades,
+per-asset returns, opposing returns, net margins, estimates and missing-detail
+warnings. Sleeper-only views retain original ESPN trade grades for inherited
+players. ESPN scoring before 2018 and postseason are unavailable; only assigned
+regular-season starts count. Incomplete ESPN pick records, unresolved historical
+pick ownership and FAAB packages are N/A rather than zero-value assumptions.
+The three explicitly ignored missing-detail ESPN trades remain omitted.
+All grades are best-effort, to-date returns, not final lifetime verdicts.
+
 ## Tests
 
 Requires Node.js 18+:

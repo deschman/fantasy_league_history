@@ -3,6 +3,7 @@ import { buildAnalytics, playoffResume } from "./analytics.mjs";
 import { renderFeature } from "./features.mjs";
 import { attachAcquisitions, attachESPN } from "./acquisitions.mjs";
 import { renderAcquisitions } from "./acquisition-view.mjs";
+import { buildTradeGrades } from "./acquisition-grades.mjs";
 import { escapeHTML, number, percent, record, ordinal, sectionHeading } from "./ui.mjs";
 
 const $ = (selector) => document.querySelector(selector);
@@ -14,6 +15,7 @@ const state = { view: new URLSearchParams(location.search).get("view") === "acqu
 let history = [];
 let analytics;
 let acquisitions;
+let tradeGrades;
 
 function avatar(name, large = false) {
   let hash = 0;
@@ -136,7 +138,7 @@ function render() {
   const rows = history.filter((row) => state.era === "all" || row.platform === state.era);
   renderOverview(rows);
   const renderers = { standings: renderStandings, champions: renderChampions, seasons: renderSeasons, records: renderRecords };
-  const context = { rows, analytics, acquisitions, state, era: state.era, mode: state.mode };
+  const context = { rows, analytics, acquisitions, tradeGrades, state, era: state.era, mode: state.mode };
   $("#view").innerHTML = renderers[state.view] ? renderers[state.view](rows) :
     state.view === "acquisitions" ? renderAcquisitions(context) : renderFeature(state.view, context);
   $("#view").setAttribute("aria-labelledby", "view-title");
@@ -148,6 +150,19 @@ function render() {
 }
 
 document.addEventListener("click", (event) => {
+  const tradeLink = event.target.closest("[data-trade-report]");
+  if (tradeLink) {
+    const report = document.getElementById(`trade-${tradeLink.dataset.tradeReport}`);
+    if (report) {
+      event.preventDefault();
+      report.closest(".trade-ledger").open = true;
+      report.open = true;
+      const summary = report.querySelector("summary");
+      summary.focus();
+      summary.scrollIntoView({ block: "start" });
+    }
+    return;
+  }
   const button = event.target.closest("button");
   if (!button) return;
   if (button.dataset.view) {
@@ -217,6 +232,7 @@ async function loadArchive() {
   }));
   acquisitions = [...attachAcquisitions(analytics, sources, sleeperAcquisitions, espnAcquisitions),
     ...attachESPN(analytics, espnAcquisitions)];
+  tradeGrades = buildTradeGrades(history, sources, acquisitions, sleeperAcquisitions, espnAcquisitions);
   for (const platform of ["espn", "sleeper"]) {
     const seasons = history.filter((row) => row.platform === platform).map((row) => row.season);
     $(`#era option[value="${platform}"]`).textContent =

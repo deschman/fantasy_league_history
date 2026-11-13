@@ -1,9 +1,51 @@
 import { SOURCE_LABELS, SOURCE_REASONS, acquisitionSummary } from "./acquisitions.mjs";
 import { escapeHTML as e, number, percent, sectionHeading } from "./ui.mjs";
+import { acquisitionGrade } from "./acquisition-grades.mjs";
 
 const points = (value) => number(value / 100, 2);
 const option = (value, label, selected) => `<option value="${e(value)}" ${String(value) === String(selected) ? "selected" : ""}>${e(label)}</option>`;
 const sourceChip = (source) => `<span class="source-chip source-${source}">${SOURCE_LABELS[source]}</span>`;
+const signedPoints = (value) => `${value > 0 ? "+" : ""}${points(value)}`;
+const gradeBadge = (grade) => `<span class="acquisition-grade grade-${grade ? grade[0].toLowerCase() : "unknown"}">${grade ?? "N/A"}</span>`;
+
+function playerGrade(player, grades) {
+  const result = acquisitionGrade(player.evidence[0], grades);
+  if (!result.report || !result.side) {
+    return `<span title="${e(result.reason)}">${gradeBadge(result.grade)}</span>`;
+  }
+  const { report, side } = result;
+  return `<details class="player-grade"><summary>${gradeBadge(result.grade)}</summary>
+    <p>${e(result.reason || `${points(side.points)} received starter pts; ${signedPoints(side.margin)} net.`)}</p>
+    <p>${report.estimated ? "Includes estimated unmade picks. " : ""}Full-history grade through ${grades.lastSeason}, not just the selected games.</p>
+    <a href="#trade-${e(report.key)}" data-trade-report="${e(report.key)}">View full trade</a></details>`;
+}
+
+function tradeLedger(grades, displayed, state, era, mode) {
+  if (!grades) return "";
+  const origins = new Set(displayed.flatMap((group) => group.players.flatMap((player) =>
+    player.evidence.filter((entry) => entry.source === "trade").map((entry) =>
+      `${entry.originPlatform ?? entry.platform}:${entry.acquiredSeason}:${entry.event}`))));
+  const reports = grades.reports.filter((report) =>
+    (era === "all" || report.platform === era || origins.has(report.key)) &&
+    (!state.acquisitionSeason || report.season === Number(state.acquisitionSeason) || origins.has(report.key)) &&
+    (!state.acquisitionManager || origins.has(report.key) ||
+      report.sides.some((side) => side.team[mode].id === state.acquisitionManager)));
+  return `<details class="trade-ledger"><summary>Trade report cards <span>${reports.length} trades · ${reports.filter((report) => report.issues.length).length} unavailable</span></summary>
+    <p class="section-footnote">Trades in the selected era/season, plus original trades behind the displayed players. Returns always use full covered regular-season history through ${grades.lastSeason}.
+    Each received player shares its team's grade for the entire deal. Pick-only trades are included.</p>
+    ${reports.length ? reports.map((report) => `<details class="trade-report" id="trade-${e(report.key)}"><summary>
+    <span><strong>${report.season} · ${report.platform === "espn" ? "ESPN" : "Sleeper"}</strong><small>${new Date(report.at).toISOString().slice(0, 10)} UTC${report.estimated ? " · Includes pick estimates" : ""}</small></span>
+    <span class="trade-grades">${report.sides.map((side) => `<span>${e(side.team[mode].name)} ${gradeBadge(side.grade)}</span>`).join("")}</span></summary>
+    ${report.issues.length ? `<p class="coverage-note"><strong>Grade unavailable:</strong> ${e(report.issues.join("; "))}. Observed returns below are incomplete, not zero-value assumptions.</p>` : ""}
+    <div class="trade-sides">${report.sides.map((side) => `<section><h4>${e(side.team[mode].name)} ${gradeBadge(side.grade)}</h4>
+    <p><strong>${points(side.points)} pts received</strong> · ${signedPoints(side.margin)} net<br>
+    Compared with ${points(side.opponentPoints)} pts${report.sides.length > 2 ? " (other teams' average)" : " for the other team"}.</p>
+    <ul>${side.assets.length ? side.assets.map((asset) => `<li><strong>${e(asset.name)}</strong>
+    <span>${asset.points === null ? "Return unavailable" : `${points(asset.points)} pts`}${asset.estimated ? " (estimated)" : ""}</span><small>${e(asset.note)}</small></li>`).join("") :
+      "<li>No directly received players or resolved picks recorded.</li>"}</ul></section>`).join("")}</div>
+    <p class="section-footnote">Trade ID: <code>${e(report.id)}</code></p></details>`).join("") :
+      '<p class="empty">No recorded trades match these filters.</p>'}</details>`;
+}
 function sourceBar(buckets, total) {
   if (total <= 0 || Object.values(buckets).some((value) => value < 0)) {
     return '<p class="section-footnote">Signed net contributions shown below; no percentage bar for zero/negative totals or source buckets.</p>';
@@ -13,7 +55,7 @@ function sourceBar(buckets, total) {
     ${Object.entries(buckets).map(([source, value]) => `<span class="source-${source}" style="width:${value / total * 100}%"></span>`).join("")}</div>`;
 }
 
-export function renderAcquisitions({ analytics, acquisitions, rows, state, era, mode }) {
+export function renderAcquisitions({ analytics, acquisitions, tradeGrades, rows, state, era, mode }) {
   const heading = sectionHeading("HOW THE ROSTER WAS BUILT", "Points by acquisition",
     "Follow the points from the draft room, the trade desk, and the waiver wire. ESPN 2018–2021 + Sleeper 2022–2025.");
   if (!acquisitions) throw new Error("Acquisition data is not loaded");
@@ -76,6 +118,29 @@ export function renderAcquisitions({ analytics, acquisitions, rows, state, era, 
     Explicit zero-point ESPN starts without an actual stat row (such as NFL byes) are preserved and flagged in the evidence.</p>
     <p>Regular-season standings totals and weekly scores can differ. The cards use weekly scores for reconciliation and show the standings discrepancy separately.
     Negative player scores are retained; shares are signed net contributions and can fall outside 0–100% when a bucket or total is negative.</p></details>
+    <details class="acquisition-method grade-method"><summary>How acquisition grades work</summary>
+    <p><strong>Draft: A · Free agency (including waivers): A+.</strong> Unknown sources are N/A.
+    Trades are graded separately for each receiving franchise, on the whole package rather than individual player performance.
+    Each traded player receives that side's deal grade. Multiple trades for the same player appear separately.</p>
+    <p>A trade's net return is the starter points its received assets earned for that franchise, minus the other team's return.
+    In multi-team trades, each side is compared with the average return of the other teams, rounded to the nearest hundredth.
+    Only covered regular-season starts count, through ${tradeGrades?.lastSeason ?? 2025}; ESPN origins carry into Sleeper.
+    Credit ends when a player is dropped or traded. Bench scores, later free-agent re-signings, postseason and replacement trade assets do not count.
+    Grades do not change with display filters and are to-date, not predictions of players' remaining careers.</p>
+    <p><strong>A-:</strong> net gain of 100+ pts · <strong>B:</strong> between -100 and +100 pts (exclusive) ·
+    <strong>C:</strong> loss of 100–249.99 pts · <strong>D:</strong> loss of 250–499.99 pts · <strong>F:</strong> loss of 500+ pts.
+    B is centered on an even trade; A- is the ceiling. Bands use raw point margins, not percentages.</p>
+    <p>A traded pick resolves by its original franchise, year and round. Once selected, we count that player's starter points while held.
+    Trading the pick away before selection ends its direct return; we do not follow the replacement assets.
+    Picks not yet made in this archive use the mean observed holding return for that rookie round, including zero-return selections.
+    The baseline is the four completed Sleeper rookie drafts (2022–2025), excluding the startup import; older classes have more scoring history.
+    Estimates are explicitly marked and will change when historical exports are refreshed.</p>
+    ${tradeGrades ? `<p>Round estimates: ${tradeGrades.averages.map((average) =>
+      `R${average.round}: <strong>${points(average.points)} pts</strong> (${average.count} picks)`).join(" · ")}.</p>` : ""}
+    <p>These are best-effort grades using assigned acquisition evidence, not guaranteed complete lifetime returns.
+    ESPN scoring begins in 2018 and missing trade/pick details are never filled with zero-value grades.
+    Unresolved pick ownership and FAAB packages are N/A.</p></details>
+    ${tradeLedger(tradeGrades, displayed, state, era, mode)}
     <h3 class="acquisition-list-title">The roster-building breakdown</h3>
     <p class="section-footnote">Tap a franchise for players, acquisition evidence, and score reconciliation. Percentages use the same starter-point denominator in every card.</p>
     <div class="acquisition-list">${displayed.map((group) => `<details class="acquisition-card"><summary><div class="acquisition-card-title">
@@ -89,9 +154,9 @@ export function renderAcquisitions({ analytics, acquisitions, rows, state, era, 
     ${group.standingPoints !== null ? `<p class="section-footnote">Regular-season standings PF: ${points(group.standingPoints)}.
     Standings minus weekly team scores: ${points(group.standingPoints - group.teamPoints)}.</p>` : ""}
     <div class="table-scroll"><table><caption class="sr-only">${e(group.name)} acquisition source players</caption><thead><tr>
-    <th>Player</th><th>Source</th><th>Points</th><th>Share</th><th>Starts</th><th>Evidence</th></tr></thead><tbody>
+    <th>Player</th><th>Source</th><th>Grade</th><th>Points</th><th>Share</th><th>Starts</th><th>Evidence</th></tr></thead><tbody>
     ${group.players.map((player) => `<tr><td><strong>${e(player.name)}</strong><small>${e(player.position)} · ${player.platform === "espn" ? "ESPN" : "Sleeper"}</small></td>
-    <td>${sourceChip(player.source)}</td><td>${points(player.points)}</td><td>${group.points === 0 ? "—" : percent(player.points / group.points)}</td><td>${player.starts}</td>
+    <td>${sourceChip(player.source)}</td><td>${playerGrade(player, tradeGrades)}</td><td>${points(player.points)}</td><td>${group.points === 0 ? "—" : percent(player.points / group.points)}</td><td>${player.starts}</td>
     <td><details class="acquisition-evidence"><summary>View ${player.evidence.length} starts</summary><ul>
     ${[...player.evidence].sort((a, b) => b.season - a.season || b.week - a.week).map((entry) => `<li>
     <strong>${entry.season} W${entry.week} · ${points(entry.points)} pts</strong>

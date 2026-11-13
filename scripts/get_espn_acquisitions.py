@@ -16,6 +16,7 @@ from espn_credentials import load_credentials
 from acquisition_migration import IMPORT_DRAFT, handoff_events, match_players
 from get_sleeper_acquisitions import kickoff_window
 from get_sleeper_data import fetch_json
+from trade_assets import espn_trade_record
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl"
@@ -292,6 +293,7 @@ def main():
                 raise ValueError(f"Duplicate CSV weekly team: {key}")
             expected[key] = cents(float(game[f"{side}_score"]))
     windows, events, starts, scores, audits, history_audits = {}, [], [], [], [], []
+    trades, trade_teams, trade_players = [], {}, {}
     previous_owners = None
     event_ids = {}
     migration_players = {}
@@ -314,6 +316,7 @@ def main():
         crosswalk = {row["team"].strip(): row["inheriting_owner"].strip() or row["owner"].strip()
                      for row in mappings if int(row["season"]) == season}
         owners = {roster: crosswalk[name] for roster, name in names.items()}
+        trade_teams[str(season)] = {str(roster): name for roster, name in names.items()}
         if previous_owners and owners != previous_owners:
             raise ValueError("ESPN franchise continuity changed; explicit roster mapping required")
         previous_owners = owners
@@ -348,8 +351,9 @@ def main():
             if {player["id"] for player in cards["players"]} != set(batch):
                 raise ValueError("ESPN returned incomplete player-card history")
             for player in cards["players"]:
+                info = player["player"]
+                trade_players[str(player["id"])] = info["fullName"]
                 if season == 2021:
-                    info = player["player"]
                     position = POSITIONS.get(info["defaultPositionId"])
                     if not position or not info.get("fullName"):
                         raise ValueError(f"Missing ESPN migration player metadata: {player['id']}")
@@ -372,6 +376,9 @@ def main():
                     continue
                 event_ids[key] = event
                 season_events.append(event)
+            if (transaction["type"] in ("TRADE_UPHOLD", "TRADE_ACCEPT") and
+                    transaction.get("status") == "EXECUTED" and transaction.get("items")):
+                trades.append(espn_trade_record(transaction, season))
         events.extend(season_events)
         audit = {"season": season, "regularWeeks": regular_weeks,
                        "counts": dict(Counter(event["kind"] for event in season_events)),
@@ -432,7 +439,8 @@ def main():
     result = {"version": 1, "platform": "espn", "method": "latest-franchise-acquisition",
               "provenanceStart": 2016, "missingTradePolicy": "ignore",
               "rows": rows, "scores": scores, "windows": windows, "audit": audits,
-              "historyAudit": history_audits,
+              "historyAudit": history_audits, "trades": trades, "tradeTeams": trade_teams,
+              "tradePlayers": trade_players,
               "migration": {"draft": IMPORT_DRAFT, "at": import_at, "rows": migration_rows}}
     temporary = None
     try:

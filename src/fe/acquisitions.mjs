@@ -177,7 +177,8 @@ export function acquisitionSummary(rows, games, history, mode = "franchise", sea
     group.buckets[row.source] += row.points;
     group.points += row.points;
     group.starts++;
-    const id = `${row.platform}:${row.player}:${row.source}`;
+    const acquisition = row.source === "trade" ? `:${row.originPlatform ?? row.platform}:${row.acquiredSeason}:${row.event}` : "";
+    const id = `${row.platform}:${row.player}:${row.source}${acquisition}`;
     if (!group.players.has(id)) group.players.set(id, { player: row.player, name: row.name, position: row.position,
       platform: row.platform, source: row.source, points: 0, starts: 0, evidence: [] });
     const player = group.players.get(id);

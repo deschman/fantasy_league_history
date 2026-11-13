@@ -5,6 +5,7 @@ import { parseCSV, buildHistory } from "./history.mjs";
 import { buildAnalytics } from "./analytics.mjs";
 import { attachAcquisitions as attachSleeper, attachESPN, acquisitionSummary } from "./acquisitions.mjs";
 import { renderAcquisitions } from "./acquisition-view.mjs";
+import { acquisitionGrade, buildTradeGrades } from "./acquisition-grades.mjs";
 
 const sources = await Promise.all(["espn", "sleeper"].map(async (platform) => {
   const [standings, crosswalk, matchups] = await Promise.all(["standings_all_seasons.csv", "crosswalk.csv", "matchups_all_seasons.csv"]
@@ -20,7 +21,68 @@ const attachAcquisitions = (analytics, sources, payload) => attachSleeper(analyt
 const rows = attachAcquisitions(analytics, sources, payload);
 const espnRows = attachESPN(analytics, espnPayload);
 const combined = [...rows, ...espnRows];
+const tradeGrades = buildTradeGrades(history, sources, combined, payload, espnPayload);
 const sum = (groups, field) => groups.reduce((total, group) => total + group[field], 0);
+
+test("real trade assets resolve, grade margins reconcile, and unmade picks use all 40 selections per round", () => {
+  assert.equal(tradeGrades.reports.length, 201);
+  assert.equal(tradeGrades.averages.length, 5);
+  assert.ok(tradeGrades.averages.every((entry) => entry.count === 40));
+  assert.ok(tradeGrades.reports.some((report) => report.estimated));
+  assert.ok(tradeGrades.reports.some((report) => report.issues.length));
+  for (const report of tradeGrades.reports) {
+    for (const side of report.sides) {
+      assert.equal(side.points, side.assets.reduce((total, asset) => total + (asset.points ?? 0), 0));
+      assert.equal(side.grade === null, report.issues.length > 0);
+      if (report.sides.length === 2) assert.equal(side.margin, side.points - report.sides.find((other) => other !== side).points);
+      for (const asset of side.assets.filter((asset) => asset.estimated)) {
+        assert.equal(asset.points, tradeGrades.averages.find((entry) => entry.round === asset.round)?.points ?? 0);
+      }
+    }
+  }
+});
+
+test("ESPN-origin trade grades retain the original deal and include cross-era holding returns", () => {
+  const allen = rows.find((row) => row.player === "4984" && row.reason === "migration" && row.source === "trade");
+  assert.ok(allen);
+  const grade = acquisitionGrade(allen, tradeGrades);
+  assert.equal(grade.grade, "A-");
+  assert.equal(grade.report.platform, "espn");
+  assert.equal(grade.report.season, 2020);
+  assert.ok(grade.side.points > 100000);
+  assert.ok(combined.filter((row) => row.event === allen.event && row.stage === "regular")
+    .some((row) => row.platform === "espn"));
+  for (const row of rows.filter((row) => row.player === allen.player && row.event === allen.event)) {
+    assert.equal(acquisitionGrade(row, tradeGrades).report, grade.report);
+  }
+});
+
+test("repeat trades for a player remain separate acquisition-grade rows without losing points", () => {
+  const first = { ...rows[0], source: "trade", event: "one", acquiredSeason: 2022, points: 100 };
+  const second = { ...first, event: "two", points: 200 };
+  const group = acquisitionSummary([first, second], [], [first.team])[0];
+  assert.equal(group.players.length, 2);
+  assert.equal(group.points, 300);
+  assert.equal(group.buckets.trade, 300);
+});
+
+test("grades and auditable trade reports render in every era and attribution mode", () => {
+  for (const era of ["all", "espn", "sleeper"]) {
+    for (const mode of ["franchise", "owner"]) {
+      const html = renderAcquisitions({ analytics, acquisitions: combined, tradeGrades, rows: history,
+        state: { acquisitionSeason: "", acquisitionManager: "", acquisitionScope: "regular" }, era, mode });
+      assert.match(html, /<th>Grade<\/th>/);
+      assert.match(html, /Trade report cards/);
+      assert.match(html, /grade-a">A\+<\/span>/);
+      assert.match(html, /grade-a">A<\/span>/);
+      assert.match(html, /grade-a">A-<\/span>/);
+      assert.match(html, /Grade unavailable/);
+      assert.match(html, /Round estimates/);
+      assert.match(html, /data-trade-report=/);
+      assert.doesNotMatch(html, /NaN|undefined/);
+    }
+  }
+});
 
 test("every starter has matched point-source evidence; only completed seasons are included", () => {
   assert.equal(rows.length, 6225);
