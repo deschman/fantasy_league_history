@@ -229,6 +229,64 @@ footer span { letter-spacing: 0; }
 .audit-notes li { margin-bottom: 12px; }
 .draft-section { margin: 28px 0; }
 .draft-section h3 { font-size: 16px; line-height: 1.6; }
+.source-draft { --source-color: #6de5c3; }
+.source-trade { --source-color: #b7a0ff; }
+.source-freeAgency { --source-color: #73baff; }
+.source-unknown { --source-color: #d7ad69; }
+.source-chip { display: inline-flex; align-items: center; gap: 6px; color: var(--source-color); font-size: 10px; white-space: nowrap; }
+.source-chip::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--source-color); flex-shrink: 0; }
+.acquisition-hero { padding: 27px; background: linear-gradient(125deg, #1d3440, #1b253b); border: 1px solid #40536b; border-radius: 14px; margin-bottom: 20px; }
+.acquisition-headline { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+.acquisition-headline > div > strong { display: block; font-size: 40px; font-weight: 800; letter-spacing: -1.5px; margin-top: 12px; }
+.acquisition-headline p { font-size: 11px; color: var(--muted); line-height: 1.7; }
+.source-coverage { text-align: right; max-width: 140px; }
+.source-coverage strong { color: var(--accent); font-size: 25px !important; letter-spacing: -.5px !important; }
+.source-coverage span { display: block; font-size: 10px; color: var(--muted); line-height: 1.7; margin-top: 5px; }
+.source-bar { display: flex; width: 100%; height: 13px; overflow: hidden; border-radius: 5px; background: #101927; margin: 22px 0; }
+.source-bar > span { display: block; height: 100%; background: var(--source-color); }
+.source-bar > span + span { border-left: 2px solid #172335; }
+.source-totals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.source-totals > div { display: flex; flex-direction: column; gap: 8px; }
+.source-totals strong { font-size: 25px; letter-spacing: -.6px; }
+.source-totals small { color: var(--muted); font-size: 11px; }
+.acquisition-method { color: var(--muted); font-size: 12px; line-height: 1.9; margin: 25px 0; }
+.acquisition-method > summary { cursor: pointer; color: #c5d1e4; }
+.acquisition-list-title { font-size: 18px; margin: 30px 0 8px; }
+.acquisition-card { border: 1px solid var(--line); background: #101a2a; border-radius: 12px; margin: 14px 0; }
+.acquisition-card > summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; cursor: pointer; padding: 23px; list-style: none; }
+.acquisition-card-title { min-width: 0; }
+.acquisition-card-title strong { display: block; font-size: 15px; overflow-wrap: anywhere; }
+.acquisition-card-title small { display: block; color: var(--muted); margin-top: 7px; font-size: 10px; line-height: 1.7; }
+.acquisition-card-coverage { font-size: 10px; color: var(--muted); text-align: right; }
+.acquisition-card-coverage > span { font-size: 18px; color: var(--accent); margin-left: 10px; }
+.acquisition-card[open] .acquisition-card-title strong { color: var(--accent); }
+.acquisition-card .source-bar { grid-column: 1 / -1; margin: 3px 0; height: 9px; }
+.source-inline { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 12px 20px; font-size: 11px; color: #d4dfef; }
+.source-inline > span { display: flex; gap: 8px; align-items: center; }
+.acquisition-detail { border-top: 1px solid var(--line); padding: 22px; }
+.acquisition-evidence { min-width: 160px; max-width: 300px; }
+.acquisition-evidence summary { cursor: pointer; color: var(--accent); font-size: 11px; padding: 8px 0; }
+.acquisition-evidence ul { list-style: none; padding: 0; }
+.acquisition-evidence li { white-space: normal; border-top: 1px solid var(--line); padding: 10px 0; font-size: 10px; line-height: 1.8; }
+.acquisition-evidence span, .acquisition-evidence code { display: block; color: var(--muted); overflow-wrap: anywhere; }
+.acquisition-evidence strong { font-size: 10px; }
+@media (max-width: 600px) {
+  .acquisition-hero { padding: 19px 15px; }
+  .acquisition-headline { gap: 15px; }
+  .acquisition-headline .eyebrow { font-size: 8px; line-height: 1.8; }
+  .acquisition-headline > div > strong { font-size: 31px; }
+  .source-coverage strong { font-size: 21px !important; }
+  .source-coverage { max-width: 85px; }
+  .source-totals { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 15px; }
+  .source-totals strong { font-size: 23px; }
+  .acquisition-card > summary { padding: 17px 14px; gap: 11px 7px; }
+  .acquisition-card-title strong { font-size: 13px; }
+  .acquisition-card-coverage { font-size: 9px; max-width: 78px; }
+  .acquisition-card-coverage > span { margin-left: 3px; }
+  .source-inline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px 6px; font-size: 10px; }
+  .source-inline > span { gap: 5px; }
+  .acquisition-detail { padding: 16px 12px; }
+}
 .season-banner .record-value { font-size: 28px; margin: 0; white-space: nowrap; }
 @media (max-width: 600px) {
   .tabs { gap: 22px; }

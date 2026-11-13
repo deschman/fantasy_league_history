@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir -p _site/src/fe
           cp index.html _site/
-          cp src/fe/app.mjs src/fe/history.mjs src/fe/analytics.mjs src/fe/features.mjs src/fe/ui.mjs src/fe/styles.css _site/src/fe/
+          cp src/fe/app.mjs src/fe/history.mjs src/fe/analytics.mjs src/fe/features.mjs src/fe/ui.mjs src/fe/acquisitions.mjs src/fe/acquisition-view.mjs src/fe/styles.css _site/src/fe/
           cp -R data _site/data
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5

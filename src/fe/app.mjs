@@ -1,14 +1,19 @@
 import { parseCSV, buildHistory, aggregate, sortStandings, seasonPodiums } from "./history.mjs";
 import { buildAnalytics, playoffResume } from "./analytics.mjs";
 import { renderFeature } from "./features.mjs";
+import { attachAcquisitions, attachESPN } from "./acquisitions.mjs";
+import { renderAcquisitions } from "./acquisition-view.mjs";
 import { escapeHTML, number, percent, record, ordinal, sectionHeading } from "./ui.mjs";
 
 const $ = (selector) => document.querySelector(selector);
-const state = { view: "standings", era: "all", mode: "franchise", metric: "wins", search: "", season: null,
+const state = { view: new URLSearchParams(location.search).get("view") === "acquisitions" ? "acquisitions" : "standings",
+  era: "all", mode: "franchise", metric: "wins", search: "", season: null,
   scope: "regular", category: "score", rivalA: "", rivalB: "", game: "", playerManager: "", position: "",
-  minStarts: "1", playerSort: "points", draftSeason: "", draftManager: "", draftQuery: "" };
+  minStarts: "1", playerSort: "points", draftSeason: "", draftManager: "", draftQuery: "",
+  acquisitionSeason: "", acquisitionManager: "", acquisitionScope: "regular" };
 let history = [];
 let analytics;
+let acquisitions;
 
 function avatar(name, large = false) {
   let hash = 0;
@@ -131,8 +136,9 @@ function render() {
   const rows = history.filter((row) => state.era === "all" || row.platform === state.era);
   renderOverview(rows);
   const renderers = { standings: renderStandings, champions: renderChampions, seasons: renderSeasons, records: renderRecords };
+  const context = { rows, analytics, acquisitions, state, era: state.era, mode: state.mode };
   $("#view").innerHTML = renderers[state.view] ? renderers[state.view](rows) :
-    renderFeature(state.view, { rows, analytics, state, era: state.era, mode: state.mode });
+    state.view === "acquisitions" ? renderAcquisitions(context) : renderFeature(state.view, context);
   $("#view").setAttribute("aria-labelledby", "view-title");
   for (const button of document.querySelectorAll("[data-view]")) {
     const selected = button.dataset.view === state.view;
@@ -173,7 +179,8 @@ document.addEventListener("click", (event) => {
 });
 document.addEventListener("change", (event) => {
   if (!["era", "mode", "metric", "scope", "category", "rivalA", "rivalB", "playerManager",
-    "position", "minStarts", "playerSort", "draftSeason", "draftManager"].includes(event.target.id)) return;
+    "position", "minStarts", "playerSort", "draftSeason", "draftManager", "acquisitionSeason",
+    "acquisitionManager", "acquisitionScope"].includes(event.target.id)) return;
   state[event.target.id] = event.target.value;
   const id = event.target.id;
   render();
@@ -203,6 +210,13 @@ async function loadArchive() {
   const detailResponse = await fetch(new URL("../../data/sleeper/details.json", import.meta.url));
   if (!detailResponse.ok) throw new Error(`Could not load Sleeper historical details (HTTP ${detailResponse.status})`);
   analytics = buildAnalytics(history, sources, await detailResponse.json());
+  const [sleeperAcquisitions, espnAcquisitions] = await Promise.all(["sleeper", "espn"].map(async (platform) => {
+    const response = await fetch(new URL(`../../data/${platform}/acquisitions.json`, import.meta.url));
+    if (!response.ok) throw new Error(`Could not load ${platform} acquisition history (HTTP ${response.status})`);
+    return response.json();
+  }));
+  acquisitions = [...attachAcquisitions(analytics, sources, sleeperAcquisitions, espnAcquisitions),
+    ...attachESPN(analytics, espnAcquisitions)];
   for (const platform of ["espn", "sleeper"]) {
     const seasons = history.filter((row) => row.platform === platform).map((row) => row.season);
     $(`#era option[value="${platform}"]`).textContent =

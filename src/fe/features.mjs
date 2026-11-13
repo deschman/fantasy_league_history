@@ -144,7 +144,7 @@ function playersView(context) {
   const starters = analytics.starters.filter((entry) => (era === "all" || entry.platform === era) &&
     (state.scope === "all" || entry.stage === state.scope));
   if (!starters.length) return sectionHeading("THE PLAYERS BEHIND THE POINTS", "Player MVPs") +
-    '<p class="empty">Starter-level data is available for Sleeper 2022–2025 only. Select Sleeper or All platforms. ESPN starter data has not been exported.</p>';
+    '<p class="empty">Player MVP rankings cover Sleeper 2022–2025 only. Select Sleeper or All platforms. ESPN 2018–2021 starters are currently used only in Roster building.</p>';
   const managers = aggregate(rows.filter((row) => row.platform === "sleeper"), mode).sort((a, b) => a.name.localeCompare(b.name));
   if (state.playerManager && !managers.some((manager) => manager.id === state.playerManager)) state.playerManager = "";
   const positions = [...new Set(starters.map((entry) => entry.position))].sort();
@@ -208,7 +208,7 @@ function auditView(context) {
   const { analytics, era } = context;
   return sectionHeading("SHOW YOUR WORK", "Data coverage", "Verified coverage and source discrepancies, so missing data never masquerades as zero.") +
     `<div class="table-scroll"><table><caption class="sr-only">Historical data coverage</caption><thead><tr><th>Season</th><th>Platform</th>
-    <th>Regular games</th><th>Title games</th><th>Starter rows</th><th>Draft picks</th></tr></thead><tbody>
+    <th>Regular games</th><th>Title games</th><th>Player MVP starter rows</th><th>Draft picks</th></tr></thead><tbody>
     ${analytics.coverage.filter((row) => era === "all" || row.platform === era).map((row) => `<tr><td>${row.season}</td><td>${row.platform.toUpperCase()}</td>
     <td>${row.regularGames}</td><td>${row.platform === "sleeper" ? row.playoffGames : "Not classified"}</td>
     <td>${row.platform === "sleeper" ? analytics.starters.filter((entry) => entry.season === row.season).length : "Unavailable"}</td>
@@ -217,6 +217,7 @@ function auditView(context) {
     <li>Sleeper title wins use bracket winners, including any official tiebreaker. Byes and placement/consolation games do not count as title wins. Bracket classification currently covers 2022–2025 only.</li>
     <li>ESPN postseason rows are excluded: the CSV does not distinguish byes, multi-week rounds, and placement games. Finish alone cannot prove wins or byes. ESPN playoff wins/appearances are unknown, not zero.</li>
     <li>Starter points use actual starter scores, not team totals. Team score overrides and scoring changes across years can affect comparisons.</li>
+    <li>Roster building separately covers ESPN 2018–2021 regular-season starters and Sleeper 2022–2025. ESPN 2016–2017 and postseason acquisition points are excluded. Acquisition lookback starts with the 2016 draft and carries into Sleeper via player/franchise matches; keeper selections and the administrative startup draft do not reset the source. Same-franchise commissioner restorations preserve the prior source. Trades with no player details are ignored. Early transaction history and the migration snapshot use best-effort evidence; missing or ambiguous identities remain Unknown.</li>
     ${era !== "espn" ? "<li>One empty 2022 draft is retained with a warning; the two populated 2022 drafts have 290 picks in total.</li>" : ""}
     ${analytics.coverage.filter((row) => era === "all" || row.platform === era).flatMap((row) => row.notes.map((note) => `<li>${row.season}: ${e(note)}</li>`)).join("")}
     </ul>`;

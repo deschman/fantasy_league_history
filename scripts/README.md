@@ -127,3 +127,110 @@ missing player metadata, or failed request prevents replacing the output.
 
 This exporter does not add ESPN draft or starter data. All downloaded detail
 seasons must already exist in the frontend's standings and crosswalks.
+
+## Sleeper acquisition sources
+
+```sh
+python3 scripts/get_sleeper_acquisitions.py
+```
+
+Requires existing `details.json`, `crosswalk.csv`, and a fresh ESPN acquisition
+export containing migration evidence (run the ESPN command below first). Writes only
+`data/sleeper/acquisitions.json`, atomically after all requests succeed.
+Only completed seasons from the details export are fetched; no 2026 season
+data is needed. Sources are the latest acquisition by each franchise and carry
+across seasons. Drafts credit the receiving roster; waived/free-agent additions
+are free agency. Player trades reset the source to trade. Drops clear the source.
+Untraceable/unexplained commissioner acquisitions remain unknown, with evidence IDs/times
+for traced starts. The file contains no cookie values or transaction messages.
+
+The 240-pick startup draft `843894119532208128` is treated as administrative
+import setup, not new draft credit. The separate 50-pick rookie draft remains
+a true draft event. ESPN migration evidence seeds each matched franchise's
+original source before Sleeper replay; later trades and true drop/re-signings
+replace it. Same-franchise commissioner placements/restorations preserve the
+last source. Drops from a different roster do not clear that history.
+
+The backend fetches completed transactions on legs 0–22, deduplicates IDs,
+and uses completion timestamps (not submission time or transaction leg)
+alongside draft completion times. Conflicting duplicate payloads and unsupported
+transaction types fail explicitly. All season roster IDs/owner IDs must have
+unchanged continuity before cross-season credit is carried.
+Individual pick timestamps are absent; when a player also moves during the
+draft's start-to-completion window, provenance is unknown until a subsequent
+unambiguous acquisition instead of letting draft completion overwrite the move.
+
+Historical NFL kickoff windows are fetched from ESPN's public scoreboard
+endpoint (`site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard`).
+Individual historical player kickoff times are not available in our starter
+export. If a drop/reacquisition leaves multiple possible sources for the same
+roster during a kickoff window, the points stay unknown rather than being
+assigned using an arbitrary weekly cutoff. Transactions after the last kickoff
+are never applied to that week's points.
+
+The frontend validates every exported row against starter points and displays
+per-source percentages plus team-total reconciliation. Regenerate this file
+whenever historical details are refreshed; stale or missing rows fail visibly.
+
+Offline regression tests:
+
+```sh
+python3 -m unittest discover -s scripts -p 'test_sleeper_acquisitions.py'
+```
+
+## ESPN acquisition sources
+
+```sh
+python3 scripts/get_espn_acquisitions.py
+```
+
+Uses the ESPN credentials described above and existing ESPN standings,
+crosswalk, and matchup CSVs. Writes only `data/espn/acquisitions.json`, atomically
+after validation succeeds. No additional packages are required.
+
+Coverage is **2018–2021 regular seasons**. The exporter fetches every historical
+regular-season lineup, including defensive players, and verifies weekly team
+scores against the CSVs. Actual starter points and separate team adjustments
+are retained. Zero-point starts without an actual stat row are explicitly
+flagged, not estimated from projections.
+
+The league's `mTransactions2` responses and `kona_playercard` history supply
+executed additions, drops, waivers, and player trades. Player cards recover
+many trade legs hidden on the league feed. Per league preference, trades with
+no recoverable player legs are ignored; warnings and per-season `ignoredTrades`
+IDs in the output audit make this approximation explicit. Lineup moves and
+traded draft picks do not count as player acquisitions.
+Keepers are retention, not new draft picks. Every prior season back to the
+2016 initial draft is searched for the latest non-keeper acquisition. The
+2016–2017 drafts/player-card history contribute provenance only; `historyAudit`
+records that lookback separately from scored-season `audit`. The 2015 endpoint
+is unavailable. Early transaction records are incomplete, so inherited
+assignments are best-effort; unmatched keeper origins still remain Unknown.
+Sources can carry
+across ESPN seasons only while the crosswalk verifies franchise continuity.
+The `migration` section supplies origins for Sleeper's 2022 import/draft/start
+players, using native ESPN IDs or unique normalized names and positions.
+Franchise joins use the crosswalk, not placeholder startup-draft assignments.
+Player-card coverage includes imported/bench players, not only historical starts.
+The snapshot orders completed drafts by completion time and executed
+transactions by execution time, or proposal time when absent. This is a
+best-effort migration rule, distinct from conservative per-week ESPN attribution.
+After refreshing this file, rerun the Sleeper acquisition exporter; its output
+is validated against the ESPN snapshot at load time. Selecting only Sleeper
+in the UI still retains the ESPN lookback.
+
+Execution timestamps are used when supplied. Otherwise the conservative
+proposal-to-next-scoring-week interval is considered (next season for
+late-season records). Overlapping intervals are not arbitrarily ordered.
+ESPN 2016–2017 transaction coverage and postseason acquisition points are
+unavailable in this export and excluded from the view's denominator.
+
+For repeat exports, optionally supply `--cache-dir /path/to/private-cache`
+**outside the workspace/static preview**. The cache contains raw league/player
+responses and is not a publishing artifact. The generated acquisition JSON
+contains only player/scoring/acquisition evidence, no cookies or member records.
+This exporter never rewrites the CSVs or crosswalk.
+
+```sh
+python3 -m unittest discover -s scripts -p 'test_espn_acquisitions.py'
+```
